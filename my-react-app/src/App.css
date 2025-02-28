@@ -1,0 +1,81 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* HEADER */
+.btn-search {
+  color: white;
+  background-color: rgba(179, 168, 15, 0.747);
+  border: 1px solid rgba(179, 168, 15, 0.747);
+}
+
+#mynavbar .navbar-nav .nav-item {
+  font-size: 20px;
+}
+
+#mynavbar .navbar-nav .nav-item .nav-link:hover {
+  color: rgba(179, 168, 15, 0.747);
+}
+
+/* END HEADER */
+/* FOOTER */
+.nav-footer .nav-item {
+  /* padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px; */
+  padding: 0px 20px 0px 20px;
+}
+
+.nav-footer {
+  height: auto;
+  align-items: center;
+}
+
+.footer nav {
+  background-color: rgb(172, 163, 31);
+  color: white;
+}
+
+/* END FOOTER */
