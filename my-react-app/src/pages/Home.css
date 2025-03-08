@@ -1,0 +1,44 @@
+.menu-container {
+    width: 250px;
+    position: relative;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.submenu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    list-style: none;
+    padding: 5px 10px;
+    display: none;
+    width: 150px;
+}
+
+.submenu li {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.submenu li:hover {
+    background: #f8f9fa;
+}
+
+/* Hiện submenu khi hover vào "Liên Hệ" */
+.list-group-item:hover .submenu {
+    display: block;
+    z-index: 1;
+}
+
+.home-top {
+    margin-bottom: 20px;
+}

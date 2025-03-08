@@ -6,6 +6,9 @@ import giay5 from "../assets/images/giay5.jpg"
 import giay6 from "../assets/images/giay6.jpg"
 import giay7 from "../assets/images/giay7.jpg"
 import giay8 from "../assets/images/giay8.jpg"
+import "./Home.css"
+import MenuHomeProduct from './MenuHomeProduct'
+import SlideShow from "./SlideShow"
 
 function Home() {
     const products = [
@@ -71,6 +74,14 @@ function Home() {
             <div>
                 <h2>TRANG CHỦ</h2>
             </div> <br />
+            <div className="row home-top">
+                <div className="col-3">
+                    <MenuHomeProduct />
+                </div>
+                <div className="col-9">
+                    <SlideShow />
+                </div>
+            </div>
             <div className="row">
                 {products.map((product) => (
                     <div className="col-12 col-md-4 mb-4" key={product.id}>

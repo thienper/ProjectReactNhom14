@@ -45,6 +45,10 @@
 }
 
 /* HEADER */
+.header {
+  background-color: #9fbd176d;
+}
+
 .btn-search {
   color: white;
   background-color: rgba(179, 168, 15, 0.747);
@@ -76,6 +80,10 @@
 .footer nav {
   background-color: rgb(172, 163, 31);
   color: white;
+}
+
+.cart-icon {
+  width: 40px;
 }
 
 /* END FOOTER */

@@ -9,7 +9,7 @@ function Container() {
 
 
             </Header>
-            <div style={{ flex: 1, padding: "100px 25px 20px 25px" }}>
+            <div style={{ flex: 1, padding: "25px 25px 20px 25px" }}>
                 <Outlet />
             </div>
             <Footer>

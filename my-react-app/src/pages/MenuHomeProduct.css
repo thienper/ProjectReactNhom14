@@ -1,0 +1,50 @@
+.menu-container {
+    width: 200px;
+    font-family: Arial, sans-serif;
+}
+
+.list-group {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-group-item {
+    position: relative;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+/* Định dạng menu con */
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #f9f9f9;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    /* Đặt menu con ngay dưới menu cha */
+    width: 100%;
+    display: none;
+    /* Ẩn submenu mặc định */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.submenu li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+
+.submenu li:hover {
+    background: #eee;
+}
+
+/* Hiển thị submenu khi hover vào menu cha */
+.list-group-item:hover .submenu {
+    display: block;
+}

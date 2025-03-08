@@ -4,7 +4,6 @@ import AboutUs from "./pages/About"
 import Contact from "./pages/Contact"
 import Container from "./pages/Container"
 import Home from "./pages/Home"
-import ProductHot from "./pages/ProductHot"
 
 function App() {
 
@@ -13,11 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Container />}
         >
-          <Route path="/list">
-            <Route path="product-hot" element={<ProductHot title="Sản phẩm HOT" />} />
-
-          </Route>
-          <Route path="" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs title="Trang thông tin" />} />
           <Route path="/contact" element={<Contact title="Trang liên lạc" />} />
         </Route>
