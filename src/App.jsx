@@ -11,6 +11,8 @@ import MensSports from './pages/MensSports';
 import WomensHeels from './pages/WomensHeels';
 import WomensSandals from './pages/WomensSandals';
 import WomensSports from './pages/WomensSports';
+import Blog from './pages/Blog';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="womens-heels" element={<WomensHeels />} />
           <Route path="account" element={<AccountPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>
     </Router>
