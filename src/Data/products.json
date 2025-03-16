@@ -51,9 +51,9 @@
         "originalPrice": 189.99,
         "discount": 0,
         "images": [
-            "https://images.unsplash.com/photo-1621881538090-b2b5ffaa25b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-            "https://images.unsplash.com/photo-1618666012174-83b441c0bc76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
-            "https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            "https://bizweb.dktcdn.net/thumb/grande/100/347/092/products/adidas-ultraboost-22-gx8017-01.jpg?v=1659927285340",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW7UTXoCXW4KRvS0dYzuaFWg8D2IGxx12pwdpjTOiVpd2D12cE8aLaQwLDfjhIQKA3JME&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeXk4Rf-CMxu87q7BxR3ft_M-gwDzFy6nDHF3d5y8CVrFd84O8Ja0HFTAsF2yN3ScBxKc&usqp=CAU"
         ],
         "colors": [
             "Black",
@@ -243,7 +243,7 @@
         "images": [
             "https://images.unsplash.com/photo-1604671801908-6f0c6a092c05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
             "https://images.unsplash.com/photo-1539185441755-769473a23570?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-            "https://images.unsplash.com/photo-1621841957884-37201592c2d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            "https://images.unsplash.com/photo-1604671801908-6f0c6a092c05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
         ],
         "colors": [
             "Grey",
@@ -288,9 +288,9 @@
         "originalPrice": 159.99,
         "discount": 0,
         "images": [
-            "https://images.unsplash.com/photo-1562183241-840b8af0721d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+            "https://product.hstatic.net/200000563747/product/upload_7df0f6bc92e94ffa9cde2fdcfd0f5f61_1024x1024.jpg",
             "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80",
-            "https://images.unsplash.com/photo-1605034313761-73ea4a0cfb80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+            "https://giaysneaker.store/media/catalog/product/cache/47d66d3609f727ab73c995561c27d006/x/_/x_22_black_hq6539_01_standard.jpg"
         ],
         "colors": [
             "Blue/Red",
@@ -562,5 +562,896 @@
         "isFeatured": false,
         "isNewArrival": false,
         "stock": 38
+    },
+    {
+        "id": 13,
+        "name": "Nike Air Max 270",
+        "brand": "Nike",
+        "price": 150,
+        "originalPrice": 180,
+        "discount": 17,
+        "images": [
+            "https://ash.vn/cdn/shop/files/3cf5361fd2872a0fa2deec7d7eba8375_1800x.jpg?v=1734423911",
+            "https://ash.vn/cdn/shop/files/3cf5361fd2872a0fa2deec7d7eba8375_1800x.jpg?v=1734423911",
+            "https://ash.vn/cdn/shop/files/3cf5361fd2872a0fa2deec7d7eba8375_1800x.jpg?v=1734423911"
+        ],
+        "colors": [
+            "Black/White",
+            "Red/Black",
+            "Blue/Grey"
+        ],
+        "sizes": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nam",
+        "type": "Thể thao",
+        "rating": 4.8,
+        "reviewCount": 512,
+        "description": "Nike Air Max 270 kết hợp thiết kế hiện đại với đệm khí lớn cho cảm giác êm ái tối đa. Thích hợp cho luyện tập thể thao và thời trang đường phố.",
+        "features": [
+            "Lưới thoáng khí",
+            "Đệm khí Air Max",
+            "Đế ngoài cao su bền bỉ"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 45
+    },
+    {
+        "id": 14,
+        "name": "Charles & Keith Pointed Heels",
+        "brand": "Charles & Keith",
+        "price": 75,
+        "originalPrice": 95,
+        "discount": 21,
+        "images": [
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw851ecf94/images/hi-res/2024-L6-CK1-60280444-J6-1.jpg?sw=756&sh=1008",
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw851ecf94/images/hi-res/2024-L6-CK1-60280444-J6-1.jpg?sw=756&sh=1008",
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw851ecf94/images/hi-res/2024-L6-CK1-60280444-J6-1.jpg?sw=756&sh=1008"
+        ],
+        "colors": [
+            "Beige",
+            "Black"
+        ],
+        "sizes": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày cao gót",
+        "gender": "Nữ",
+        "type": "Cao gót",
+        "rating": 4.6,
+        "reviewCount": 150,
+        "description": "Đôi giày cao gót mũi nhọn với thiết kế thanh lịch, phù hợp cho môi trường công sở hoặc dự tiệc.",
+        "features": [
+            "Gót nhọn 7cm",
+            "Chất liệu da tổng hợp cao cấp",
+            "Lót trong êm ái"
+        ],
+        "isFeatured": false,
+        "isNewArrival": true,
+        "stock": 28
+    },
+    {
+        "id": 15,
+        "name": "Clarks Tilden Cap Oxford",
+        "brand": "Clarks",
+        "price": 120,
+        "originalPrice": 150,
+        "discount": 20,
+        "images": [
+            "https://clarks.scene7.com/is/image/Pangaea2Build/26110309_W_1?wid=640&fmt=jpeg&qlt=85",
+            "https://clarks.scene7.com/is/image/Pangaea2Build/26110309_W_2?wid=640&fmt=jpeg&qlt=85",
+            "https://clarks.scene7.com/is/image/Pangaea2Build/26110309_W_3?wid=640&fmt=jpeg&qlt=85"
+        ],
+        "colors": [
+            "Brown",
+            "Black"
+        ],
+        "sizes": [
+            39,
+            40,
+            41,
+            42,
+            43,
+            44
+        ],
+        "category": "Giày Tây",
+        "gender": "Nam",
+        "type": "Tây",
+        "rating": 4.5,
+        "reviewCount": 89,
+        "description": "Giày Tây Clarks thiết kế cổ điển với da thật cao cấp, đem lại sự tinh tế và lịch lãm cho quý ông hiện đại.",
+        "features": [
+            "Chất liệu da bò mềm",
+            "Đế cao su chống trơn trượt",
+            "Thiết kế cap toe truyền thống"
+        ],
+        "isFeatured": true,
+        "isNewArrival": false,
+        "stock": 15
+    },
+    {
+        "id": 16,
+        "name": "H&M Cross-Strap Sandals",
+        "brand": "H&M",
+        "price": 35,
+        "originalPrice": 50,
+        "discount": 30,
+        "images": [
+            "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5c%2F00%2F5c00bbd98ba649e8f04e04dcbade067b38e9b6e3.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+            "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5c%2F00%2F5c00bbd98ba649e8f04e04dcbade067b38e9b6e3.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+            "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5c%2F00%2F5c00bbd98ba649e8f04e04dcbade067b38e9b6e3.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]"
+        ],
+        "colors": [
+            "White",
+            "Tan"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Sandal",
+        "gender": "Nữ",
+        "type": "Sandal",
+        "rating": 4.2,
+        "reviewCount": 64,
+        "description": "Sandal quai chéo thời trang, phù hợp với phong cách casual và mùa hè năng động.",
+        "features": [
+            "Đế cao su nhẹ",
+            "Chất liệu giả da mềm",
+            "Thiết kế thoáng khí"
+        ],
+        "isFeatured": false,
+        "isNewArrival": true,
+        "stock": 50
+    },
+    {
+        "id": 17,
+        "name": "Teva Hurricane XLT2",
+        "brand": "Teva",
+        "price": 80,
+        "originalPrice": 100,
+        "discount": 20,
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0456/5070/6581/files/1019235-BLK-1_fd6f2e08-a84d-4f9e-ac11-f24c211bd81d.jpg?v=1685605023",
+            "https://cdn.shopify.com/s/files/1/0456/5070/6581/files/1019235-BLK-1_fd6f2e08-a84d-4f9e-ac11-f24c211bd81d.jpg?v=1685605023",
+            "https://cdn.shopify.com/s/files/1/0456/5070/6581/files/1019235-BLK-1_fd6f2e08-a84d-4f9e-ac11-f24c211bd81d.jpg?v=1685605023"
+        ],
+        "colors": [
+            "Navy",
+            "Olive"
+        ],
+        "sizes": [
+            39,
+            40,
+            41,
+            42,
+            43
+        ],
+        "category": "Sandal",
+        "gender": "Nam",
+        "type": "Sandal",
+        "rating": 4.4,
+        "reviewCount": 77,
+        "description": "Sandal thể thao Teva phù hợp cho các chuyến trekking, đi bộ và sử dụng hàng ngày nhờ thiết kế chắc chắn và thoải mái.",
+        "features": [
+            "Dây quai điều chỉnh đa điểm",
+            "Đế cao su bám dính tốt",
+            "Chống thấm nước"
+        ],
+        "isFeatured": true,
+        "isNewArrival": false,
+        "stock": 32
+    },
+    {
+        "id": 18,
+        "name": "Adidas Ultraboost",
+        "brand": "Adidas",
+        "price": 180,
+        "originalPrice": 220,
+        "discount": 18,
+        "images": [
+            "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
+            "https://images.pexels.com/photos/1124466/pexels-photo-1124466.jpeg",
+            "https://images.pexels.com/photos/1456733/pexels-photo-1456733.jpeg"
+        ],
+        "colors": [
+            "Đen",
+            "Trắng",
+            "Xám"
+        ],
+        "sizes": [
+            40,
+            41,
+            42,
+            43,
+            44
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nam",
+        "type": "Thể thao",
+        "rating": 4.8,
+        "reviewCount": 350,
+        "description": "Adidas Ultraboost là dòng giày chạy bộ cao cấp, thiết kế linh hoạt, hỗ trợ tối đa khi vận động.",
+        "features": [
+            "Công nghệ Boost tăng đàn hồi",
+            "Vải Primeknit ôm chân",
+            "Đế cao su Continental bám đường tốt"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 25
+    },
+    {
+        "id": 19,
+        "name": "Classic Nude Heels",
+        "brand": "Charles & Keith",
+        "price": 75,
+        "originalPrice": 100,
+        "discount": 25,
+        "images": [
+            "https://www.shutterstock.com/image-photo/beige-pointy-toe-womens-shoes-260nw-2174032935.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuHw0k4RghDF0y0HmUThjOqWldZm5GoKZWAgPndWb0vbByEBNShBnJuPuUIcenwD088EQ&usqp=CAU",
+            "data:image/jpeg;base64,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"
+        ],
+        "colors": [
+            "Nude",
+            "Đen"
+        ],
+        "sizes": [
+            35,
+            36,
+            37,
+            38,
+            39
+        ],
+        "category": "Giày cao gót",
+        "gender": "Nữ",
+        "type": "Cao gót",
+        "rating": 4.6,
+        "reviewCount": 280,
+        "description": "Giày cao gót Classic Nude với thiết kế thanh lịch, tôn dáng giúp bạn thêm tự tin và nổi bật.",
+        "features": [
+            "Gót nhọn cao 7cm",
+            "Chất liệu da tổng hợp cao cấp",
+            "Thiết kế mũi nhọn thời trang"
+        ],
+        "isFeatured": false,
+        "isNewArrival": true,
+        "stock": 12
+    },
+    {
+        "id": 20,
+        "name": "Leather Sandals",
+        "brand": "ECCO",
+        "price": 90,
+        "originalPrice": 120,
+        "discount": 25,
+        "images": [
+            "https://product.hstatic.net/1000003969/product/den_sd05103_18_20240422134649_603628a878a84675a1ee61e5349e1032_master.jpeg",
+            "https://product.hstatic.net/1000003969/product/den_sd05103_17_20240422134649_96ea52fcea014c0c9a5efe044e64f254_master.jpeg",
+            "https://product.hstatic.net/1000003969/product/den_sd05103_18_20240422134649_603628a878a84675a1ee61e5349e1032_master.jpeg"
+        ],
+        "colors": [
+            "Nâu",
+            "Đen"
+        ],
+        "sizes": [
+            40,
+            41,
+            42,
+            43
+        ],
+        "category": "Sandal",
+        "gender": "Nam",
+        "type": "Sandal",
+        "rating": 4.5,
+        "reviewCount": 150,
+        "description": "Sandal da ECCO thiết kế thoải mái, phù hợp cho mùa hè hoặc du lịch biển.",
+        "features": [
+            "Da thật mềm mại",
+            "Đệm lót êm ái",
+            "Đế cao su chống trượt"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 18
+    },
+    {
+        "id": 21,
+        "name": "Nike Air Max 270",
+        "brand": "Nike",
+        "price": 150,
+        "originalPrice": 180,
+        "discount": 17,
+        "images": [
+            "https://ash.vn/cdn/shop/files/3cf5361fd2872a0fa2deec7d7eba8375_1800x.jpg?v=1734423911",
+            "https://supersports.com.vn/cdn/shop/files/AH8050-027-1_1200x1200.png?v=1726739143",
+            "https://ash.vn/cdn/shop/files/3cf5361fd2872a0fa2deec7d7eba8375_1800x.jpg?v=1734423911"
+        ],
+        "colors": [
+            "Đen",
+            "Trắng",
+            "Xanh dương"
+        ],
+        "sizes": [
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nam",
+        "type": "Thể thao",
+        "rating": 4.7,
+        "reviewCount": 420,
+        "description": "Nike Air Max 270 là sự kết hợp giữa phong cách thời trang và hiệu năng thể thao với đế Air Max lớn nhất từ trước đến nay.",
+        "features": [
+            "Đệm Air lớn nhất của Nike",
+            "Chất liệu vải mesh thoáng khí",
+            "Thiết kế năng động, thời trang"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 30
+    },
+    {
+        "id": 22,
+        "name": "Adidas Superstar",
+        "brand": "Adidas",
+        "price": 90,
+        "originalPrice": 110,
+        "discount": 18,
+        "images": [
+            "https://images.pexels.com/photos/1124466/pexels-photo-1124466.jpeg",
+            "https://images.pexels.com/photos/1456733/pexels-photo-1456733.jpeg",
+            "https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg"
+        ],
+        "colors": [
+            "Trắng/Đen",
+            "Đen/Trắng"
+        ],
+        "sizes": [
+            37,
+            38,
+            39,
+            40,
+            41,
+            42
+        ],
+        "category": "Giày casual",
+        "gender": "Unisex",
+        "type": "Casual",
+        "rating": 4.5,
+        "reviewCount": 500,
+        "description": "Adidas Superstar với thiết kế vỏ sò đặc trưng, là biểu tượng của phong cách hip-hop và đường phố.",
+        "features": [
+            "Mũi giày vỏ sò bảo vệ",
+            "Da thật cao cấp",
+            "Đế cao su chống trượt"
+        ],
+        "isFeatured": true,
+        "isNewArrival": false,
+        "stock": 40
+    },
+    {
+        "id": 23,
+        "name": "Giày Tây Oxford Brogue",
+        "brand": "Clarks",
+        "price": 120,
+        "originalPrice": 150,
+        "discount": 20,
+        "images": [
+            "https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg",
+            "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg",
+            "https://images.pexels.com/photos/292998/pexels-photo-292998.jpeg"
+        ],
+        "colors": [
+            "Nâu",
+            "Đen"
+        ],
+        "sizes": [
+            39,
+            40,
+            41,
+            42,
+            43,
+            44
+        ],
+        "category": "Giày Tây",
+        "gender": "Nam",
+        "type": "Tây",
+        "rating": 4.6,
+        "reviewCount": 180,
+        "description": "Giày tây Oxford Brogue với đường may tinh tế, phù hợp môi trường công sở và sự kiện sang trọng.",
+        "features": [
+            "Da bò cao cấp",
+            "Đế da truyền thống",
+            "Mũi giày wingtip họa tiết brogue"
+        ],
+        "isFeatured": false,
+        "isNewArrival": false,
+        "stock": 15
+    },
+    {
+        "id": 24,
+        "name": "Giày Cao Gót Đính Đá",
+        "brand": "Jimmy Choo",
+        "price": 350,
+        "originalPrice": 400,
+        "discount": 12,
+        "images": [
+            "https://images.pexels.com/photos/8041381/pexels-photo-8041381.jpeg",
+            "https://images.pexels.com/photos/8041382/pexels-photo-8041382.jpeg",
+            "https://images.pexels.com/photos/8041378/pexels-photo-8041378.jpeg"
+        ],
+        "colors": [
+            "Bạc",
+            "Vàng ánh kim"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày cao gót",
+        "gender": "Nữ",
+        "type": "Cao gót",
+        "rating": 4.9,
+        "reviewCount": 95,
+        "description": "Giày cao gót đính đá lấp lánh, tạo điểm nhấn cho các buổi tiệc tối hay sự kiện sang trọng.",
+        "features": [
+            "Đính đá thủ công",
+            "Gót nhọn cao 10cm",
+            "Lớp lót mềm mại, êm ái khi mang lâu"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 8
+    },
+    {
+        "id": 25,
+        "name": "Sandal Nữ Quai Chéo",
+        "brand": "Birkenstock",
+        "price": 80,
+        "originalPrice": 100,
+        "discount": 20,
+        "images": [
+            "https://images.pexels.com/photos/7697310/pexels-photo-7697310.jpeg",
+            "https://images.pexels.com/photos/7697326/pexels-photo-7697326.jpeg",
+            "https://images.pexels.com/photos/7697313/pexels-photo-7697313.jpeg"
+        ],
+        "colors": [
+            "Nâu",
+            "Đen",
+            "Kem"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Sandal",
+        "gender": "Nữ",
+        "type": "Sandal",
+        "rating": 4.3,
+        "reviewCount": 210,
+        "description": "Sandal nữ với thiết kế quai chéo đơn giản, nhẹ nhàng và thoáng mát cho mùa hè.",
+        "features": [
+            "Chất liệu da tổng hợp mềm mại",
+            "Đế đệm EVA nhẹ nhàng",
+            "Thiết kế tối giản phù hợp đi chơi, dạo phố"
+        ],
+        "isFeatured": false,
+        "isNewArrival": false,
+        "stock": 25
+    },
+    {
+        "id": 26,
+        "name": "Giày Thể Thao Nam Jordan Retro",
+        "brand": "Nike",
+        "price": 220,
+        "originalPrice": 250,
+        "discount": 12,
+        "images": [
+            "https://images.pexels.com/photos/116079/pexels-photo-116079.jpeg",
+            "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg",
+            "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg"
+        ],
+        "colors": [
+            "Đỏ",
+            "Trắng",
+            "Đen"
+        ],
+        "sizes": [
+            40,
+            41,
+            42,
+            43,
+            44
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nam",
+        "type": "Thể thao",
+        "rating": 4.8,
+        "reviewCount": 530,
+        "description": "Jordan Retro với thiết kế cổ điển và chất liệu cao cấp, dành cho những tín đồ bóng rổ.",
+        "features": [
+            "Chất liệu da cao cấp",
+            "Đế cao su chống trượt",
+            "Thiết kế phong cách cổ điển"
+        ],
+        "isFeatured": true,
+        "isNewArrival": false,
+        "stock": 20
+    },
+    {
+        "id": 27,
+        "name": "Sandal Nữ Đế Bệt Quai Ngang",
+        "brand": "Charles & Keith",
+        "price": 70,
+        "originalPrice": 90,
+        "discount": 22,
+        "images": [
+            "https://images.pexels.com/photos/6311653/pexels-photo-6311653.jpeg",
+            "https://images.pexels.com/photos/6311651/pexels-photo-6311651.jpeg",
+            "https://images.pexels.com/photos/6311649/pexels-photo-6311649.jpeg"
+        ],
+        "colors": [
+            "Be",
+            "Trắng",
+            "Đen"
+        ],
+        "sizes": [
+            35,
+            36,
+            37,
+            38,
+            39
+        ],
+        "category": "Sandal",
+        "gender": "Nữ",
+        "type": "Sandal",
+        "rating": 4.2,
+        "reviewCount": 300,
+        "description": "Sandal nữ đế bệt với thiết kế quai ngang tinh tế, thích hợp cho phong cách nhẹ nhàng, nữ tính.",
+        "features": [
+            "Da tổng hợp mềm mại",
+            "Đế cao su nhẹ nhàng",
+            "Thiết kế đơn giản dễ phối đồ"
+        ],
+        "isFeatured": false,
+        "isNewArrival": true,
+        "stock": 35
+    },
+    {
+        "id": 28,
+        "name": "Giày Tây Nam Derby",
+        "brand": "Ecco",
+        "price": 180,
+        "originalPrice": 210,
+        "discount": 14,
+        "images": [
+            "https://images.pexels.com/photos/1027130/pexels-photo-1027130.jpeg",
+            "https://images.pexels.com/photos/1374123/pexels-photo-1374123.jpeg",
+            "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg"
+        ],
+        "colors": [
+            "Nâu",
+            "Đen"
+        ],
+        "sizes": [
+            40,
+            41,
+            42,
+            43,
+            44
+        ],
+        "category": "Giày Tây",
+        "gender": "Nam",
+        "type": "Tây",
+        "rating": 4.7,
+        "reviewCount": 160,
+        "description": "Giày Derby thiết kế cổ điển, da mềm mịn phù hợp cho dân văn phòng và sự kiện trang trọng.",
+        "features": [
+            "Da bê cao cấp",
+            "Đế cao su chống trượt",
+            "Kiểu dáng hiện đại lịch lãm"
+        ],
+        "isFeatured": false,
+        "isNewArrival": false,
+        "stock": 18
+    },
+    {
+        "id": 29,
+        "name": "Giày Cao Gót Nữ Mũi Nhọn",
+        "brand": "Christian Louboutin",
+        "price": 400,
+        "originalPrice": 450,
+        "discount": 11,
+        "images": [
+            "https://down-vn.img.susercontent.com/file/f446775cc3f23249801f516aaa2d0445",
+            "https://down-vn.img.susercontent.com/file/f446775cc3f23249801f516aaa2d0445",
+            "https://down-vn.img.susercontent.com/file/f446775cc3f23249801f516aaa2d0445"
+        ],
+        "colors": [
+            "Đỏ",
+            "Đen",
+            "Hồng nude"
+        ],
+        "sizes": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày cao gót",
+        "gender": "Nữ",
+        "type": "Cao gót",
+        "rating": 4.9,
+        "reviewCount": 125,
+        "description": "Giày cao gót mũi nhọn đế đỏ biểu tượng, phù hợp cho các sự kiện sang trọng và thời trang.",
+        "features": [
+            "Gót cao 12cm",
+            "Da bóng cao cấp",
+            "Lớp lót da mềm mại thoải mái khi mang lâu"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 10
+    },
+    {
+        "id": 30,
+        "name": "Giày Thể Thao Nữ Adidas Ultraboost",
+        "brand": "Adidas",
+        "price": 200,
+        "originalPrice": 240,
+        "discount": 16,
+        "images": [
+            "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
+            "https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg",
+            "https://images.pexels.com/photos/1124466/pexels-photo-1124466.jpeg"
+        ],
+        "colors": [
+            "Hồng",
+            "Trắng",
+            "Xám"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nữ",
+        "type": "Thể thao",
+        "rating": 4.8,
+        "reviewCount": 410,
+        "description": "Ultraboost nổi bật với phần đế Boost êm ái, hỗ trợ tối đa cho các vận động viên chuyên nghiệp và người dùng yêu thích vận động.",
+        "features": [
+            "Đệm Boost siêu nhẹ",
+            "Thân giày Primeknit co giãn",
+            "Đế ngoài Stretchweb linh hoạt"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 22
+    },
+    {
+        "id": 31,
+        "name": "Sandal Nam Quai Ngang",
+        "brand": "Teva",
+        "price": 85,
+        "originalPrice": 100,
+        "discount": 15,
+        "images": [
+            "https://images.pexels.com/photos/6311651/pexels-photo-6311651.jpeg",
+            "https://images.pexels.com/photos/6311650/pexels-photo-6311650.jpeg",
+            "https://images.pexels.com/photos/6311649/pexels-photo-6311649.jpeg"
+        ],
+        "colors": [
+            "Đen",
+            "Nâu"
+        ],
+        "sizes": [
+            39,
+            40,
+            41,
+            42,
+            43
+        ],
+        "category": "Sandal",
+        "gender": "Nam",
+        "type": "Sandal",
+        "rating": 4.4,
+        "reviewCount": 150,
+        "description": "Sandal nam phù hợp cho hoạt động ngoài trời và du lịch với quai ngang chắc chắn và đế cao su bám đường.",
+        "features": [
+            "Đế cao su chống trơn trượt",
+            "Quai dán Velcro điều chỉnh dễ dàng",
+            "Chất liệu nhanh khô khi gặp nước"
+        ],
+        "isFeatured": false,
+        "isNewArrival": false,
+        "stock": 30
+    },
+    {
+        "id": 32,
+        "name": "Giày Tây Nam Loafer Da Lộn",
+        "brand": "Gucci",
+        "price": 350,
+        "originalPrice": 400,
+        "discount": 13,
+        "images": [
+            "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg",
+            "https://images.pexels.com/photos/292998/pexels-photo-292998.jpeg",
+            "https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg"
+        ],
+        "colors": [
+            "Nâu",
+            "Xám tro"
+        ],
+        "sizes": [
+            40,
+            41,
+            42,
+            43,
+            44
+        ],
+        "category": "Giày Tây",
+        "gender": "Nam",
+        "type": "Tây",
+        "rating": 4.8,
+        "reviewCount": 100,
+        "description": "Loafer da lộn cao cấp mang phong cách Ý, thoải mái và dễ kết hợp với nhiều trang phục.",
+        "features": [
+            "Da lộn mềm mại",
+            "Đế cao su linh hoạt",
+            "Mũi giày bo tròn, không gây cấn chân"
+        ],
+        "isFeatured": true,
+        "isNewArrival": false,
+        "stock": 12
+    },
+    {
+        "id": 33,
+        "name": "Giày Cao Gót Nữ Quai Ngang Trong Suốt",
+        "brand": "Steve Madden",
+        "price": 110,
+        "originalPrice": 130,
+        "discount": 15,
+        "images": [
+            "https://images.pexels.com/photos/8041382/pexels-photo-8041382.jpeg",
+            "https://images.pexels.com/photos/8041381/pexels-photo-8041381.jpeg",
+            "https://images.pexels.com/photos/8041378/pexels-photo-8041378.jpeg"
+        ],
+        "colors": [
+            "Trong suốt",
+            "Be"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày cao gót",
+        "gender": "Nữ",
+        "type": "Cao gót",
+        "rating": 4.5,
+        "reviewCount": 85,
+        "description": "Giày cao gót với quai ngang trong suốt giúp kéo dài đôi chân, phong cách hiện đại và thanh lịch.",
+        "features": [
+            "Quai nhựa PVC trong suốt",
+            "Gót vuông 8cm chắc chắn",
+            "Đế cao su chống trượt"
+        ],
+        "isFeatured": false,
+        "isNewArrival": true,
+        "stock": 18
+    },
+    {
+        "id": 34,
+        "name": "Giày Thể Thao Nam Puma RS-X",
+        "brand": "Puma",
+        "price": 160,
+        "originalPrice": 190,
+        "discount": 15,
+        "images": [
+            "https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg",
+            "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg",
+            "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg"
+        ],
+        "colors": [
+            "Trắng/Xanh",
+            "Đen/Đỏ"
+        ],
+        "sizes": [
+            39,
+            40,
+            41,
+            42,
+            43,
+            44
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nam",
+        "type": "Thể thao",
+        "rating": 4.6,
+        "reviewCount": 250,
+        "description": "Puma RS-X với phong cách retro và phối màu nổi bật, lý tưởng cho thời trang đường phố.",
+        "features": [
+            "Đế EVA nhẹ",
+            "Thiết kế retro hiện đại",
+            "Thân giày mesh thoáng khí"
+        ],
+        "isFeatured": false,
+        "isNewArrival": false,
+        "stock": 28
+    },
+    {
+        "id": 35,
+        "name": "Sandal Nữ Đế Xuồng Thắt Nơ",
+        "brand": "Tory Burch",
+        "price": 130,
+        "originalPrice": 150,
+        "discount": 13,
+        "images": [
+            "https://images.pexels.com/photos/7697310/pexels-photo-7697310.jpeg",
+            "https://images.pexels.com/photos/7697326/pexels-photo-7697326.jpeg",
+            "https://images.pexels.com/photos/7697310/pexels-photo-7697310.jpeg"
+        ],
+        "colors": [
+            "Kem",
+            "Hồng",
+            "Đen"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Sandal",
+        "gender": "Nữ",
+        "type": "Sandal",
+        "rating": 4.7,
+        "reviewCount": 190,
+        "description": "Sandal đế xuồng thắt nơ nhẹ nhàng, phù hợp với phong cách nữ tính và năng động mùa hè.",
+        "features": [
+            "Đế xuồng 5cm",
+            "Quai vải thắt nơ",
+            "Đệm lót êm ái"
+        ],
+        "isFeatured": false,
+        "isNewArrival": true,
+        "stock": 26
     }
 ]

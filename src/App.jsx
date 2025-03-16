@@ -2,8 +2,11 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import Layout from './components/Layout'; // mới thêm
+import ProductDetail from "./components/ui/Products/ProductDetail";
 import AccountPage from './pages/Account';
+import Blog from './pages/Blog';
 import CartPage from './pages/Cart';
+import Contact from './pages/Contact';
 import Home from './pages/Home';
 import MensLeather from './pages/MensLeather';
 import MensSandals from './pages/MensSandals';
@@ -11,8 +14,6 @@ import MensSports from './pages/MensSports';
 import WomensHeels from './pages/WomensHeels';
 import WomensSandals from './pages/WomensSandals';
 import WomensSports from './pages/WomensSports';
-import Blog from './pages/Blog';
-import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="cart" element={<CartPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
         </Route>
       </Routes>
     </Router>
