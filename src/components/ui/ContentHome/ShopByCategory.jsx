@@ -27,7 +27,7 @@ const ShopByCategory = () => {
     ];
 
     return (
-        <section className="container my-5">
+        <section className="container-custom my-5">
             <h1 className="text-center mb-4 fw-bold pt-4 ">Danh Mục Giày</h1>
 
             <div className="row g-4">

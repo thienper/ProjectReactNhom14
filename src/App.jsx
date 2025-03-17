@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
+import "./App.css";
 import Layout from './components/Layout'; // mới thêm
 import ProductDetail from "./components/ui/Products/ProductDetail";
 import AccountPage from './pages/Account';
@@ -31,7 +32,7 @@ function App() {
           <Route path="womens-heels" element={<WomensHeels />} />
           <Route path="account" element={<AccountPage />} />
           <Route path="cart" element={<CartPage />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/blogs" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
         </Route>
