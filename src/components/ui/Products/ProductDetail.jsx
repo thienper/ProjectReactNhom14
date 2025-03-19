@@ -5,7 +5,7 @@ import {
     Shield,
     Truck
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // import { getProductById } from '../api/products';
 import products from "../../../Data/products.json";
@@ -20,6 +20,11 @@ const ProductDetail = () => {
     const [quantity, setQuantity] = useState(1);
     const [selectedSize, setSelectedSize] = useState('');
     const [selectedImage, setSelectedImage] = useState(product.images[0]);
+    useEffect(() => {
+        if (product && product.images && product.images.length > 0) {
+            setSelectedImage(product.images[0]);
+        }
+    }, [product]);
 
     // useEffect(() => {
     //     const fetchProduct = async () => {
@@ -146,7 +151,7 @@ const ProductDetail = () => {
 
                         {/* Add to cart */}
                         <div className="button-container">
-                            <button className="custom-button" onClick="handleAddToCart()">
+                            <button className="custom-button" onClick={handleAddToCart}>
                                 <span className="icon">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
