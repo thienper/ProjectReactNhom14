@@ -7,7 +7,7 @@ function BlogList() {
 
     return (
         <div className="container-custom mx-auto px-4 pt-5">
-            <h1 className='pb-3'>Danh sách Blog Demo</h1>
+            <h1 className='pb-3'>Danh sách Blog </h1>
 
             <div className="row">
                 {demoBlogs.map((blog) => (
