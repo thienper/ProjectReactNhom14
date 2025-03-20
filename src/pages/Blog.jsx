@@ -1,9 +1,12 @@
-import 'react';
+import { useEffect } from 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import blogs from "../Data/blogs.json";
 
 const Blog = () => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
     return (
         <Container className="my-5 shadow p-4 bg-white rounded">
             <h2 className="text-center mb-4">Tin Tức & Khuyến Mãi</h2>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./ShopByCategory.css"; // CSS riêng mình sẽ tạo ở dưới
+import "./ShopByCategory.css";
 
 const ShopByCategory = () => {
     const categories = [
@@ -33,17 +33,20 @@ const ShopByCategory = () => {
             <div className="row g-4">
                 {categories.map((category) => (
                     <div key={category.id} className="col-md-4">
-                        <div className="category-card position-relative overflow-hidden rounded shadow-sm">
+                        <div className="category-card position-relative overflow-hidden shadow-sm">
                             <img
                                 src={category.image}
                                 alt={category.title}
                                 className="img-fluid w-100 h-100 object-fit-cover"
                             />
-                            <div className="overlay p-3 d-flex flex-column justify-content-end">
+                            <div className="overlay-text p-3 d-flex flex-column justify-content-end">
                                 <h3 className="text-white fw-bold mb-2">{category.title}</h3>
                                 <p className="text-white">{category.description}</p>
                                 <button className="btn btn-light btn-sm mt-2 align-self-start">
-                                    Shop Now
+                                    <a href={`#${category.id}`}>
+                                        Shop Now
+                                    </a>
+
                                 </button>
                             </div>
                         </div>

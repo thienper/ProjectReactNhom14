@@ -23,7 +23,7 @@ const NewArrivals = () => {
         setItemOffset(newOffset);
     };
     return (
-        <section className="container-custom my-5 pt-5">
+        <section id="3" className="container-custom my-5 pt-5">
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <h1 className="fw-bold">Giày Mới</h1>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import { User } from 'lucide-react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';

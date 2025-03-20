@@ -4,7 +4,6 @@ import App from './App.jsx';
 import { OrderProvider } from "./context/ContextAPI.jsx";
 import './index.css';
 
-
 createRoot(document.getElementById('root')).render(
     <OrderProvider>
         <App />

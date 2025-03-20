@@ -38,7 +38,7 @@ const AllProducts = () => {
     };
 
     return (
-        <section className="py-16 bg-white pt-5">
+        <section id='1' className="py-16 bg-white pt-5">
             <div className="container-custom mx-auto px-4">
                 <h2 className="text-3xl font-bold mb-10">All Products</h2>
 
