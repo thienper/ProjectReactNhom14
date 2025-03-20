@@ -1,8 +1,9 @@
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import ReactPaginate from 'react-paginate';
-import "./NewArrivals.css";
+import { Link } from "react-router-dom";
 import productsData from "../../../Data/products.json";
+import "./NewArrivals.css";
 
 const NewArrivals = () => {
     const [itemOffset, setItemOffset] = useState(0);
@@ -53,15 +54,16 @@ const NewArrivals = () => {
                                     </div>
                                     <div className="d-flex justify-content-between align-items-center mt-3">
                                         <h5 className="text-primary fw-bold">{product.price}</h5>
-                                        <button
+
+                                        <Button as={Link} to={`/product/${product.id}`}
                                             className="btn btn-dark btn-sm d-flex align-items-center"
-                                            onClick={(e) => {
-                                                e.preventDefault(); // Ngăn việc click button chuyển trang
-                                                // TODO: Xử lý logic Add to Cart ở đây
-                                            }}
+
                                         >
-                                            <i className="bi bi-cart-plus me-2"></i> Add
-                                        </button>
+                                            Xem thêm
+
+                                        </Button>
+
+
                                     </div>
                                 </div>
                             </div>

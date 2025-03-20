@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from "react-bootstrap";
 import ReactPaginate from 'react-paginate';
 import { Link } from "react-router-dom";
 import productsData from "../../../Data/products.json";
@@ -123,15 +124,13 @@ const AllProducts = () => {
                                         </div>
                                         <div className="d-flex justify-content-between align-items-center mt-3">
                                             <h5 className="text-primary fw-bold">{product.price}$</h5>
-                                            <button
+                                            <Button as={Link} to={`/product/${product.id}`}
                                                 className="btn btn-dark btn-sm d-flex align-items-center"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    // TODO: Add to Cart Logic
-                                                }}
+
                                             >
-                                                <i className="bi bi-cart-plus me-2"></i> Add
-                                            </button>
+                                                Xem thêm
+
+                                            </Button>
                                         </div>
                                     </div>
                                 </div>
