@@ -79,7 +79,7 @@ const CartPage = () => {
                             <p><strong>Phí vận chuyển:</strong> $5.00</p>
                             <hr />
                             <h5>Tổng cộng: ${(calculateSubtotal() + 5).toFixed(2)}</h5>
-                            <Button as={Link} variant="success" className="w-100 mt-3">Tiến hành thanh toán</Button>
+                            <Button as={Link} to={"/checkout"} variant="success" className="w-100 mt-3">Tiến hành thanh toán</Button>
                         </Card.Body>
                     </Card>
                 </Col>

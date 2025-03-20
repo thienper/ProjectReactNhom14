@@ -7,6 +7,7 @@ import ProductDetail from "./components/ui/Products/ProductDetail";
 import AccountPage from './pages/Account';
 import Blog from './pages/Blog';
 import CartPage from './pages/Cart';
+import Checkout from "./pages/Checkout";
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import MensLeather from './pages/MensLeather';
@@ -32,6 +33,7 @@ function App() {
           <Route path="womens-heels" element={<WomensHeels />} />
           <Route path="account" element={<AccountPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="checkout" element={<Checkout />} />
           <Route path="/blogs" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/:productId" element={<ProductDetail />} />

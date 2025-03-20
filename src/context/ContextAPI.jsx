@@ -4,6 +4,7 @@ const ContextAPI = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const OrderProvider = ({ children }) => {
+    // Quản lý sản phẩm
     const [orderList, setOrderList] = useState([]);
 
     const addToOrder = (dish) => {
@@ -18,9 +19,29 @@ export const OrderProvider = ({ children }) => {
         );
         setOrderList(updatedOrder);
     };
+    // Quản lý account
+    const [user, setUser] = useState(null);
 
+    const login = (userData) => {
+        updateUser(userData);
+    };
+
+    const logout = () => {
+        updateUser(null);
+    };
+
+    const register = (newUser) => {
+        updateUser(newUser);
+    };
+    const updateUser = (updatedInfo) => {
+        console.log("Cập nhật user với:", updatedInfo);
+        setUser(prev => ({
+            ...prev,
+            ...updatedInfo
+        }));
+    };
     return (
-        <ContextAPI.Provider value={{ orderList, addToOrder, removeFromOrder, updateQuantity }}>
+        <ContextAPI.Provider value={{ user, updateUser, login, logout, register, orderList, setOrderList, addToOrder, removeFromOrder, updateQuantity }}>
             {children}
         </ContextAPI.Provider>
     );
