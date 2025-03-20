@@ -19,11 +19,10 @@ import productsData from "../Data/products.json";
 import "./styles/WomensHeels.css";
 
 const heroImageUrl =
-    "https://cany.vn/image/catalog/banner/cata/giay-tay-banner.png";
+    "https://wallpaperaccess.com/full/680096.jpg";
 
 const MensLeather = () => {
     const [products, setProducts] = useState([]);
-    const [reviews, setReviews] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [priceRange, setPriceRange] = useState("all");
@@ -45,7 +44,7 @@ const MensLeather = () => {
             try {
                 setLoading(true);
 
-                const womenHeels = productsData.filter(
+                const menLeather = productsData.filter(
                     (product) =>
                         product.gender === "Nam" &&
                         ((product.category &&
@@ -61,40 +60,12 @@ const MensLeather = () => {
                 );
 
                 const productsToUse =
-                    womenHeels.length > 0
-                        ? womenHeels
+                    menLeather.length > 0
+                        ? menLeather
                         : productsData
                             .filter((product) => product.gender === "Nam")
                             .slice(0, 30);
 
-                const fallbackReviews = [
-                    {
-                        name: "Nguyễn Thị Hương",
-                        location: "Hà Nội",
-                        image:
-                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                        rating: 5,
-                        text: "Tôi đã mua đôi giày cao gót từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với nhiều trang phục khác nhau.",
-                    },
-                    {
-                        name: "Trần Minh Anh",
-                        location: "TP. Hồ Chí Minh",
-                        image:
-                            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                        rating: 4,
-                        text: "Giày cao gót rất đẹp và đúng với hình ảnh trên website. Chất lượng tốt, đi êm chân, chỉ hơi đau chút sau khi đi cả ngày.",
-                    },
-                    {
-                        name: "Lê Thanh Hà",
-                        location: "Đà Nẵng",
-                        image:
-                            "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80",
-                        rating: 5,
-                        text: "Sản phẩm đúng với mô tả, phù hợp với cả trang phục công sở và dạ tiệc. Tôi sẽ mua thêm đôi khác trong tương lai.",
-                    },
-                ];
-
-                setReviews(fallbackReviews);
 
                 const enhancedData = productsToUse.map((product) => ({
                     ...product,
@@ -115,16 +86,16 @@ const MensLeather = () => {
                             : product.color || "Đen",
                     category:
                         product.type ||
-                        ["stiletto", "block", "kitten"][Math.floor(Math.random() * 3)],
+                        ["Artificial leather", "Suede leather"][Math.floor(Math.random() * 2)],
                     discount:
                         product.discount ||
                         (Math.random() > 0.8 ? Math.floor(Math.random() * 20 + 10) : 0),
                     rating: product.rating || (Math.random() * 2 + 3).toFixed(1),
-                    name: product.name.includes("Heel")
+                    name: product.name.includes("Leather")
                         ? product.name
                         : product.name
-                            .replace("Running", "Stiletto")
-                            .replace("Shoe", "Heel"),
+                            .replace("Running", "Artificial leather")
+                            .replace("Shoe", "Leather"),
                 }));
 
                 setProducts(enhancedData);
@@ -139,30 +110,19 @@ const MensLeather = () => {
                         name: "Steve Madden Vala",
                         price: "1.890.000đ",
                         image:
-                            "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
+                            "https://m.media-amazon.com/images/I/71pIccjh+oL._AC_SY695_.jpg",
                         rating: "4.5",
-                        category: "stiletto",
+                        category: "Artificial leather",
                         isNew: true,
                         discount: 0,
                         bestSeller: true,
-                        color: "Đen",
+                        color: "Đỏ",
                     },
                 ];
 
-                const fallbackReviews = [
-                    {
-                        name: "Nguyễn Thị Hương",
-                        location: "Hà Nội",
-                        image:
-                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                        rating: 5,
-                        text: "Tôi đã mua đôi giày cao gót từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với nhiều trang phục khác nhau.",
-                    },
-                ];
 
                 setProducts(fallbackProducts);
                 setFilteredProducts(fallbackProducts);
-                setReviews(fallbackReviews);
                 setLoading(false);
             }
         };
@@ -203,11 +163,9 @@ const MensLeather = () => {
     if (activeCategory !== "all") {
         activeFilters.push({
             label:
-                activeCategory === "stiletto"
-                    ? "Stiletto"
-                    : activeCategory === "block"
-                        ? "Gót vuông"
-                        : "Gót thấp",
+                activeCategory === "Artificial leather"
+                    ? "Da tổng hợp"
+                    : "Da lộn",
             clear: () => setActiveCategory("all"),
         });
     }
@@ -298,14 +256,11 @@ const MensLeather = () => {
     ]);
 
     // eslint-disable-next-line no-unused-vars
-    const getStilettoHeels = () =>
-        products.filter((p) => p.category === "stiletto").slice(0, 4);
+    const getArtificialLeather = () =>
+        products.filter((p) => p.category === "Artificial leather").slice(0, 4);
     // eslint-disable-next-line no-unused-vars
-    const getBlockHeels = () =>
-        products.filter((p) => p.category === "block").slice(0, 4);
-    // eslint-disable-next-line no-unused-vars
-    const getKittenHeels = () =>
-        products.filter((p) => p.category === "kitten").slice(0, 4);
+    const getSuedeLeather = () =>
+        products.filter((p) => p.category === "Suede leather").slice(0, 4);
     // eslint-disable-next-line no-unused-vars
     const getNewestArrivals = () => products.filter((p) => p.isNew).slice(0, 4);
     const getBestSellers = () => products.filter((p) => p.bestSeller).slice(0, 4);
@@ -440,11 +395,9 @@ const MensLeather = () => {
 
             <div className="p-4">
                 <div className="text-sm text-gray-500 mb-1 capitalize">
-                    {product.category === "stiletto"
-                        ? "Stiletto"
-                        : product.category === "block"
-                            ? "Gót vuông"
-                            : "Gót thấp"}
+                    {product.category === "Artificial leather"
+                        ? "Da tổng hợp"
+                        : "Da lộn"}
                 </div>
                 <h3 className="font-bold text-lg mb-1 line-clamp-1 hover:text-blue-600 transition-colors">
                     {product.name}
@@ -513,10 +466,10 @@ const MensLeather = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent flex items-center">
                         <div className="text-white p-6 md:p-16 max-w-2xl">
                             <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-                                Giày Tây Nam
+                                Giày Da Nam
                             </h1>
                             <p className="text-lg md:text-xl mb-6 opacity-90">
-                                Khám phá bộ sưu tập giày tây nam cao cấp, tôn dáng và tạo nên vẻ
+                                Khám phá bộ sưu tập giày da nam cao cấp, tôn dáng và tạo nên vẻ
                                 sang trọng cho mọi bước chân
                             </p>
                             <button className="bg-white text-gray-800 font-semibold px-6 py-2 rounded hover:bg-gray-200 transition-colors">
@@ -663,7 +616,7 @@ const MensLeather = () => {
                             {/* Loại giày */}
                             <div className="mb-5 border-b border-gray-100 pb-4">
                                 <FilterSectionHeader
-                                    title="Loại gót"
+                                    title="Loại da"
                                     isOpen={showShoeTypes}
                                     toggle={() => setShowShoeTypes(!showShoeTypes)}
                                 />
@@ -678,41 +631,27 @@ const MensLeather = () => {
                                                     }`}
                                                 onClick={() => setActiveCategory("all")}
                                             >
-                                                <span className="text-xl mb-1">👠</span>
                                                 <span className="text-sm">Tất cả</span>
                                             </button>
 
                                             <button
-                                                className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeCategory === "stiletto"
+                                                className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeCategory === "Artificial leather"
                                                     ? "bg-blue-50 text-blue-700 font-medium"
                                                     : "bg-gray-50 hover:bg-gray-100 text-gray-700"
                                                     }`}
-                                                onClick={() => setActiveCategory("stiletto")}
+                                                onClick={() => setActiveCategory("Artificial leather")}
                                             >
-                                                <span className="text-xl mb-1">👠</span>
-                                                <span className="text-sm">Stiletto</span>
+                                                <span className="text-sm">Da tổng hợp</span>
                                             </button>
 
                                             <button
-                                                className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeCategory === "block"
+                                                className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeCategory === "Suede leather"
                                                     ? "bg-blue-50 text-blue-700 font-medium"
                                                     : "bg-gray-50 hover:bg-gray-100 text-gray-700"
                                                     }`}
-                                                onClick={() => setActiveCategory("block")}
+                                                onClick={() => setActiveCategory("Suede leather")}
                                             >
-                                                <span className="text-xl mb-1">👡</span>
-                                                <span className="text-sm">Gót vuông</span>
-                                            </button>
-
-                                            <button
-                                                className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeCategory === "kitten"
-                                                    ? "bg-blue-50 text-blue-700 font-medium"
-                                                    : "bg-gray-50 hover:bg-gray-100 text-gray-700"
-                                                    }`}
-                                                onClick={() => setActiveCategory("kitten")}
-                                            >
-                                                <span className="text-xl mb-1">👢</span>
-                                                <span className="text-sm">Gót thấp</span>
+                                                <span className="text-sm">Da lộn</span>
                                             </button>
                                         </div>
                                     </div>
@@ -974,43 +913,30 @@ const MensLeather = () => {
                                 Giảm giá
                             </button>
                             <button
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeCategory === "stiletto"
+                                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeCategory === "Artificial leather"
                                     ? "bg-blue-600 text-white"
                                     : "bg-white text-gray-700 hover:bg-gray-100"
                                     }`}
                                 onClick={() =>
                                     setActiveCategory(
-                                        activeCategory === "stiletto" ? "all" : "stiletto"
+                                        activeCategory === "Artificial leather" ? "all" : "Artificial leather"
                                     )
                                 }
                             >
-                                Stiletto
+                                Da tổng hợp
                             </button>
                             <button
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeCategory === "block"
+                                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeCategory === "Suede leather"
                                     ? "bg-blue-600 text-white"
                                     : "bg-white text-gray-700 hover:bg-gray-100"
                                     }`}
                                 onClick={() =>
                                     setActiveCategory(
-                                        activeCategory === "block" ? "all" : "block"
+                                        activeCategory === "Suede leather" ? "all" : "bSuede leather"
                                     )
                                 }
                             >
-                                Gót vuông
-                            </button>
-                            <button
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeCategory === "kitten"
-                                    ? "bg-blue-600 text-white"
-                                    : "bg-white text-gray-700 hover:bg-gray-100"
-                                    }`}
-                                onClick={() =>
-                                    setActiveCategory(
-                                        activeCategory === "kitten" ? "all" : "kitten"
-                                    )
-                                }
-                            >
-                                Gót thấp
+                                Da lộn
                             </button>
                         </div>
 
@@ -1208,59 +1134,6 @@ const MensLeather = () => {
                                     className="product-card-wrapper"
                                 >
                                     {renderProductCard(product)}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* Customer Reviews Section */}
-                {reviews.length > 0 && (
-                    <div className="mt-16 bg-white shadow-sm rounded-xl p-6">
-                        <div className="section-title flex items-center justify-between mb-6">
-                            <h2 className="text-2xl font-bold">Đánh Giá Từ Khách Hàng</h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {reviews.map((review, index) => (
-                                <div
-                                    key={index}
-                                    className="review-card p-4 border border-gray-100 rounded-lg"
-                                >
-                                    <div className="flex items-center mb-4">
-                                        <img
-                                            className="w-12 h-12 rounded-full object-cover mr-3"
-                                            src={review.image}
-                                            alt={review.name}
-                                        />
-                                        <div>
-                                            <h4 className="font-bold">{review.name}</h4>
-                                            <div className="text-sm text-gray-500">
-                                                {review.location}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="mb-3 flex">
-                                        {[...Array(5)].map((_, i) => (
-                                            <FaStar
-                                                key={i}
-                                                className={
-                                                    i < review.rating
-                                                        ? "text-yellow-400"
-                                                        : "text-gray-300"
-                                                }
-                                            />
-                                        ))}
-                                    </div>
-
-                                    <p className="text-gray-600">{review.text}</p>
-
-                                    <div className="mt-4 text-right">
-                                        <button className="inline-flex items-center text-blue-600 hover:text-blue-700">
-                                            <FaRegThumbsUp className="mr-1" /> Hữu ích
-                                        </button>
-                                    </div>
                                 </div>
                             ))}
                         </div>

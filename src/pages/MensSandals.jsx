@@ -18,11 +18,10 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const heroImageUrl =
-    "https://nguonhangchina.com/wp-content/uploads/2024/02/Noi-dung-doan-van-ban-cua-ban-2024-02-28T161827.709-1170x440.jpg";
+    "https://thuvienmuasam.com/uploads/default/original/2X/3/36042117db90622c0e5b6d2917145024d0632166.jpeg";
 
 const MensSandals = () => {
     const [products, setProducts] = useState([]);
-    const [reviews, setReviews] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [priceRange, setPriceRange] = useState("all");
@@ -43,7 +42,7 @@ const MensSandals = () => {
             try {
                 setLoading(true);
 
-                const womenSandals = productsData.filter(product =>
+                const menSandals = productsData.filter(product =>
                     product.gender === "Nam" && (
                         (product.category && product.category.toLowerCase().includes("sandal")) ||
                         (product.type && product.type.toLowerCase().includes("sandal")) ||
@@ -52,32 +51,8 @@ const MensSandals = () => {
                     )
                 );
 
-                const productsToUse = womenSandals.length > 0 ? womenSandals :
+                const productsToUse = menSandals.length > 0 ? menSandals :
                     productsData.filter(product => product.gender === "Nam").slice(0, 30);
-
-                try {
-                    const reviewResponse = await axios.get(
-                        "https://67dbd6fd1fd9e43fe476247e.mockapi.io/reviews"
-                    );
-                    const reviewData = reviewResponse.data;
-
-                    let reviewsToUse = Array.isArray(reviewData)
-                        ? reviewData
-                        : reviewData.reviews || reviewData.items || [];
-
-                    setReviews(reviewsToUse.slice(0, 3));
-                } catch (reviewError) {
-                    console.error("Error loading reviews:", reviewError);
-                    setReviews([
-                        {
-                            name: "Nguyễn Thị Hương",
-                            location: "Hà Nội",
-                            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                            rating: 5,
-                            text: "Tôi đã mua đôi dép xăng đan từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với thời tiết mùa hè.",
-                        },
-                    ]);
-                }
 
                 const enhancedData = productsToUse.map(product => ({
                     ...product,
@@ -256,19 +231,19 @@ const MensSandals = () => {
         brandFilters,
     ]);
 
-    // const getCasualSandals = () =>
-    //   products.filter((p) => p.category === "casual").slice(0, 4);
-    // const getFormalSandals = () =>
-    //   products.filter((p) => p.category === "formal").slice(0, 4);
-    // const getBeachSandals = () =>
-    //   products.filter((p) => p.category === "beach").slice(0, 4);
-    // const getNewestArrivals = () => products.filter((p) => p.isNew).slice(0, 4);
-    // const getBestSellers = () => products.filter((p) => p.bestSeller).slice(0, 4);
-    // const getDiscountedProducts = () =>
-    //   products
-    //     .filter((p) => p.discount > 0)
-    //     .sort((a, b) => b.discount - a.discount)
-    //     .slice(0, 4);
+    const getCasualSandals = () =>
+        products.filter((p) => p.category === "casual").slice(0, 4);
+    const getFormalSandals = () =>
+        products.filter((p) => p.category === "formal").slice(0, 4);
+    const getBeachSandals = () =>
+        products.filter((p) => p.category === "beach").slice(0, 4);
+    const getNewestArrivals = () => products.filter((p) => p.isNew).slice(0, 4);
+    const getBestSellers = () => products.filter((p) => p.bestSeller).slice(0, 4);
+    const getDiscountedProducts = () =>
+        products
+            .filter((p) => p.discount > 0)
+            .sort((a, b) => b.discount - a.discount)
+            .slice(0, 4);
 
     const brands = [
         {
@@ -452,10 +427,10 @@ const MensSandals = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent flex items-center">
                         <div className="text-white p-6 md:p-16 max-w-2xl">
                             <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-                                Dép Xăng Đan Nam
+                                Dép San Đan Nam
                             </h1>
                             <p className="text-lg md:text-xl mb-6 opacity-90">
-                                Khám phá bộ sưu tập dép xăng đan Nam cao cấp, kết hợp hoàn hảo
+                                Khám phá bộ sưu tập dép san đan Nam cao cấp, kết hợp hoàn hảo
                                 giữa sự thoải mái và thời trang
                             </p>
                             <button className="bg-white text-gray-800 font-semibold px-6 py-2 rounded hover:bg-gray-200 transition-colors">
@@ -1009,88 +984,6 @@ const MensSandals = () => {
                             </div>
                         )}
                     </div>
-                </div>
-            </div>
-
-            {/* Customer Reviews Section */}
-            <div className="container mx-auto px-4 py-12 bg-white my-6 rounded-lg shadow-sm">
-                <div className="text-center mb-10">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                        Đánh Giá Từ Khách Hàng
-                    </h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
-                        Khám phá những đánh giá chân thực từ khách hàng của chúng tôi về các
-                        sản phẩm dép xăng đan Nam
-                    </p>
-                </div>
-
-                {reviews.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {reviews.map((review, index) => (
-                            <div
-                                key={index}
-                                className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                            >
-                                <div className="flex items-center mb-4">
-                                    <img
-                                        src={review.image || "https://via.placeholder.com/40"}
-                                        alt={review.name}
-                                        className="w-12 h-12 rounded-full object-cover mr-4"
-                                    />
-                                    <div>
-                                        <h4 className="font-bold text-gray-800">{review.name}</h4>
-                                        <p className="text-gray-600 text-sm">{review.location}</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex mb-3">
-                                    {[...Array(5)].map((_, i) => (
-                                        <FaStar
-                                            key={i}
-                                            className={
-                                                i < review.rating ? "text-yellow-400" : "text-gray-300"
-                                            }
-                                            size={16}
-                                        />
-                                    ))}
-                                    <span className="ml-2 text-sm text-gray-600">
-                                        {new Date().toLocaleDateString("vi-VN", {
-                                            year: "numeric",
-                                            month: "long",
-                                            day: "numeric",
-                                        })}
-                                    </span>
-                                </div>
-
-                                <p className="text-gray-700 mb-4">{review.text}</p>
-
-                                <div className="flex items-center mt-4 text-gray-500 text-sm">
-                                    <button className="flex items-center hover:text-blue-600">
-                                        <FaRegThumbsUp className="mr-1" size={14} />
-                                        <span>Hữu ích (15)</span>
-                                    </button>
-                                    <span className="mx-2">•</span>
-                                    <button className="hover:text-blue-600">Báo cáo</button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-10">
-                        <div className="text-5xl mb-4">📝</div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">
-                            Chưa có đánh giá
-                        </h3>
-                        <p className="text-gray-600">
-                            Hãy là người đầu tiên đánh giá về sản phẩm của chúng tôi!
-                        </p>
-                    </div>
-                )}
-
-                <div className="text-center mt-10">
-                    <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium inline-flex items-center transition-colors">
-                        Xem tất cả đánh giá <FaChevronRight className="ml-2" size={12} />
-                    </button>
                 </div>
             </div>
         </div>
