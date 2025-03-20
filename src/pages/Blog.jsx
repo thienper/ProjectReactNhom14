@@ -1,28 +1,40 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import blogs from "../Data/blogs.json";
 
 const Blog = () => {
     return (
         <Container className="my-5 shadow p-4 bg-white rounded">
-            <h2 className="mb-4">Our Blog</h2>
-            <p>
-                Welcome to our blog! Stay tuned for the latest news, fashion trends, and style tips.
-            </p>
-            <hr />
-            <div className="mt-4">
-                <h4>Blog Post Title 1</h4>
-                <p className="text-muted">Published on March 14, 2025</p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel purus at quam sagittis accumsan.
-                </p>
-            </div>
-            <div className="mt-4">
-                <h4>Blog Post Title 2</h4>
-                <p className="text-muted">Published on March 10, 2025</p>
-                <p>
-                    Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus.
-                </p>
-            </div>
+            <h2 className="text-center mb-4">Tin Tức & Khuyến Mãi</h2>
+            <Row>
+                {blogs.map((blog) => (
+                    <Col key={blog.id} md={4} className="mb-4">
+                        <Card className="h-100 shadow-sm border-0">
+                            <Card.Img
+                                variant="top"
+                                src={blog.image}
+                                style={{ height: '200px', objectFit: 'cover' }}
+                            />
+                            <Card.Body className="d-flex flex-column">
+                                <Badge bg="success" className="mb-2" style={{ width: "fit-content" }}>
+                                    {blog.category}
+                                </Badge>
+                                <Card.Title className="fs-5">{blog.title}</Card.Title>
+                                <Card.Text className="text-muted small mb-2">
+                                    {blog.author} - {new Date(blog.date).toLocaleDateString()}
+                                </Card.Text>
+                                <Card.Text className="flex-grow-1">
+                                    {blog.summary}
+                                </Card.Text>
+                                <Button as={Link} to={`/blogs/${blog.id}`} variant="outline-primary" size="sm" className="mt-auto">
+                                    Đọc thêm
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
         </Container>
     );
 };

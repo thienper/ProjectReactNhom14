@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import "./App.css";
 import Layout from './components/Layout'; // mới thêm
+import BlogDetail from "./components/ui/Blogs/BlogDetail";
 import ProductDetail from "./components/ui/Products/ProductDetail";
 import AccountPage from './pages/Account';
 import Blog from './pages/Blog';
@@ -35,6 +36,7 @@ function App() {
           <Route path="cart" element={<CartPage />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="/blogs" element={<Blog />} />
+          <Route path='blogs/:blogId' element={<BlogDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
         </Route>

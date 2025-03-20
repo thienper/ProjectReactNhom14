@@ -4,13 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { useOrder } from '../context/ContextAPI';
 
 const Checkout = () => {
-    const { orderList, setOrderList, user } = useOrder();
+    const { orderList, setOrderList } = useOrder();
     const navigate = useNavigate();
 
-    // Thông tin địa chỉ giao hàng
+    // Lấy thông tin user từ localStorage (đã đăng nhập)
+    const [user, setUser] = useState(() => {
+        const storedUser = localStorage.getItem('user');
+        return storedUser ? JSON.parse(storedUser) : null;
+    });
+
+    // Thông tin giao hàng (auto fill nếu có user)
     const [customerName, setCustomerName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
+
     useEffect(() => {
         if (user) {
             setCustomerName(user.name || '');
@@ -18,6 +25,7 @@ const Checkout = () => {
             setAddress(user.address || '');
         }
     }, [user]);
+
     const shippingFee = 5;
 
     const calculateSubtotal = () => {
@@ -25,7 +33,7 @@ const Checkout = () => {
     };
 
     const handlePlaceOrder = () => {
-        // Kiểm tra thông tin nhập vào
+        // Validate thông tin
         if (!customerName.trim()) {
             alert('Vui lòng nhập tên người nhận!');
             return;
@@ -51,16 +59,18 @@ const Checkout = () => {
         console.log('Đơn hàng:', orderDetails);
 
         alert('Đặt hàng thành công! Cảm ơn bạn đã mua sắm.');
-        setOrderList([]);
+        setOrderList([]); // Reset giỏ hàng
         navigate('/', { replace: true });
-
     };
 
+    // Nếu không có sản phẩm trong giỏ hàng
     if (orderList.length === 0) {
         return (
             <div className="container text-center my-5">
                 <h3>Không có sản phẩm nào trong giỏ hàng!</h3>
-                <Button variant="primary" onClick={() => navigate('/')}>Quay về trang chủ</Button>
+                <Button variant="primary" onClick={() => navigate('/')}>
+                    Quay về trang chủ
+                </Button>
             </div>
         );
     }
@@ -72,7 +82,7 @@ const Checkout = () => {
             </h2>
 
             <Row>
-                {/* Bảng sản phẩm */}
+                {/* Danh sách sản phẩm */}
                 <Col md={8}>
                     <Table responsive bordered hover className="align-middle bg-white shadow-sm rounded">
                         <thead className="table-primary">
@@ -88,7 +98,12 @@ const Checkout = () => {
                                 <tr key={item.id}>
                                     <td>
                                         <div className="d-flex align-items-center">
-                                            <img src={item.image} alt={item.name} className="me-3 rounded" style={{ width: '60px', height: '60px' }} />
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                className="me-3 rounded"
+                                                style={{ width: '60px', height: '60px', objectFit: 'cover' }}
+                                            />
                                             <div>
                                                 <h6 className="mb-0">{item.name}</h6>
                                                 <small>Size: {item.size}</small>
@@ -104,7 +119,7 @@ const Checkout = () => {
                     </Table>
                 </Col>
 
-                {/* Form địa chỉ giao hàng */}
+                {/* Thông tin giao hàng */}
                 <Col md={4}>
                     <Card className="shadow-sm rounded bg-white">
                         <Card.Header className="bg-warning text-dark rounded-top">Thông tin giao hàng</Card.Header>

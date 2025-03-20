@@ -1,69 +1,38 @@
-import {
-    Minus,
-    Plus,
-    RefreshCw,
-    Shield,
-    Truck
-} from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-// import { getProductById } from '../api/products';
+import { Minus, Plus, RefreshCw, Shield, Truck } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
 import { useOrder } from '../../../context/ContextAPI';
 import products from "../../../Data/products.json";
 import "./ProductDetail.css";
 import RatingStars from './RatingStars';
 
-
 const ProductDetail = () => {
     const { addToOrder } = useOrder();
-    const { productId } = useParams(); // Lấy id từ URL
-    const productIdd = parseInt(productId); // Đổi về số nếu id là số
+    const { productId } = useParams();
+    const productIdd = parseInt(productId);
     const product = products.find((item) => item.id === productIdd);
 
     const [quantity, setQuantity] = useState(1);
     const [selectedSize, setSelectedSize] = useState('');
     const [selectedImage, setSelectedImage] = useState(product.images[0]);
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [productId]);
+    useEffect(() => {
         if (product && product.images && product.images.length > 0) {
             setSelectedImage(product.images[0]);
         }
     }, [product]);
 
-    // useEffect(() => {
-    //     const fetchProduct = async () => {
-    //         try {
-    //             const productData = getProductById(parseInt(params.id));
-    //             if (productData) {
-    //                 setProduct(productData);
-    //             } else {
-    //                 // Redirect to 404 if product not found
-    //                 setLocation('/not-found');
-    //             }
-    //         } catch (error) {
-    //             console.error('Error fetching product:', error);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-
-    //     fetchProduct();
-    // }, [params.id, setLocation]);
-
-
-
-    const handleIncreaseQuantity = () => {
-        setQuantity(quantity + 1);
-    };
-
+    const handleIncreaseQuantity = () => setQuantity(quantity + 1);
     const handleDecreaseQuantity = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1);
-        }
+        if (quantity > 1) setQuantity(quantity - 1);
     };
 
     const handleAddToCart = () => {
         if (!selectedSize) {
-            alert('Please select a size');
+            alert('Vui lòng chọn size');
             return;
         }
 
@@ -71,138 +40,178 @@ const ProductDetail = () => {
             id: product.id,
             name: product.name,
             price: product.price,
-            quantity: quantity,
+            quantity,
             size: selectedSize,
             image: selectedImage
         };
 
         addToOrder(orderItem);
-
-        alert(`Added ${quantity} ${product.name} (Size: ${selectedSize}) to cart`);
+        alert(`Đã thêm ${quantity} sản phẩm ${product.name} (Size: ${selectedSize}) vào giỏ hàng`);
     };
 
+    // Tìm sản phẩm liên quan
+    const relatedProducts = products
+        .filter(item => item.id !== product.id && item.category === product.category)
+        .slice(0, 3); // Giới hạn 3 sản phẩm liên quan
+
+    if (!product) {
+        return (
+            <Container className="my-5">
+                <h2>Không tìm thấy sản phẩm!</h2>
+                <Button as={Link} to="/mens-sports" variant="primary" className="mt-3">
+                    Quay lại danh sách sản phẩm
+                </Button>
+            </Container>
+        );
+    }
 
     return (
-        <div className=" mx-auto px-4 mr-5 ml-2">
+        <div className="my-5 container-custom">
 
-            {/* Product details */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 d-flex">
-                {/* Product images */}
-                <div className="row">
-                    <div className="col-6 product-gallery">
-                        {/* Hình ảnh lớn */}
-                        <div className="main-image">
-                            <img src={selectedImage} alt={product.name} />
+
+            <Row className="gap-4 justify-content-evenly">
+                {/* Ảnh và gallery */}
+                <Col md={5}>
+                    <div className="product-gallery mb-4">
+                        <div className="main-image mb-3">
+                            <img src={selectedImage} alt={product.name} className="img-fluid rounded shadow" />
                         </div>
-
-                        {/* Các hình nhỏ bên dưới */}
-                        <div className="thumbnails">
+                        <div className="d-flex gap-2">
                             {product.images.slice(0, 4).map((img, index) => (
                                 <div
                                     key={index}
                                     className={`thumbnail ${selectedImage === img ? "active" : ""}`}
                                     onClick={() => setSelectedImage(img)}
+                                    style={{ cursor: 'pointer' }}
                                 >
-                                    <img src={img} alt={`Thumbnail ${index + 1}`} />
+                                    <img src={img} alt={`Thumbnail ${index + 1}`} width="80" className="rounded shadow-sm" />
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <div className='right-detail-product col-6'>
-                        <h1 className="right-detail-product-name">{product.name}</h1>
-                        <p className="right-detail-product-category">{product.category}</p>
+                </Col>
 
-                        {/* Ratings */}
-                        <div className="rating-container">
-                            <RatingStars rate={product.rating} />
-                            <span className="review-count">({product.reviewCount} reviews)</span>
-                        </div>
+                {/* Thông tin sản phẩm */}
+                <Col md={5}>
+                    <h1 className="fw-bold mb-2">{product.name}</h1>
+                    <Badge bg="secondary" className="mb-3">{product.category}</Badge>
 
-                        {/* Price */}
-                        <div className="price-container">
-                            <span className="current-price">${product.price.toFixed(2)}</span>
-                            {product.originalPrice && (
-                                <span className="original-price">${product.originalPrice.toFixed(2)}</span>
-                            )}
-                        </div>
+                    {/* Rating */}
+                    <div className="rating-container mb-3">
+                        <RatingStars rate={product.rating} />
+                        <span className="text-muted small ms-2">({product.reviewCount} đánh giá)</span>
+                    </div>
 
-                        {/* Description */}
-                        <p className="product-description">{product.description}</p>
+                    {/* Price */}
+                    <div className="price-container mb-4">
+                        <span className="fs-3 fw-bold text-danger">${product.price.toFixed(2)}</span>
+                        {product.originalPrice && (
+                            <span className="fs-5 text-muted text-decoration-line-through ms-2">
+                                ${product.originalPrice.toFixed(2)}
+                            </span>
+                        )}
+                    </div>
 
-                        {/* Size selection */}
-                        <div className="mb-6">
-                            <h3 className="text-lg font-medium mb-2">Select Size</h3>
-                            <div className="size-buttons-container">
-                                {product.sizes.map((size) => (
-                                    <button
-                                        key={size}
-                                        className={`size-button ${selectedSize === size ? 'selected' : ''}`}
-                                        onClick={() => setSelectedSize(size)}
-                                    >
-                                        {size}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
+                    {/* Mô tả */}
+                    <p className="product-description mb-4">{product.description}</p>
 
-                        {/* Quantity */}
-                        <div className="mb-6">
-                            <h3 className="text-lg font-medium mb-2 pt-5">Quantity</h3>
-                            <div className="quantity-selector">
-                                <button className="quantity-button" onClick={handleDecreaseQuantity}>
-                                    <Minus className="w-5 h-5" />
-                                </button>
-                                <input
-                                    type="text"
-                                    className="quantity-input"
-                                    value={quantity}
-                                    readOnly
-                                />
-                                <button className="quantity-button" onClick={handleIncreaseQuantity}>
-                                    <Plus className="w-5 h-5" />
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Add to cart */}
-                        <div className="button-container">
-                            <button className="custom-button" onClick={handleAddToCart}>
-                                <span className="icon">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                                    </svg>
-                                </span>
-                                <span className="text">Add to Cart</span>
-                            </button>
-                        </div>
-
-                        {/* Product meta */}
-                        <div className="border-t border-gray-200 pt-6 ">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 d-flex justify-content-around">
-                                <div className="flex items-center">
-                                    <Truck className="w-6 h-6 text-primary mr-2" />
-                                    <span className="text-sm p-1">Free shipping over $100</span>
-                                </div>
-                                <div className="flex items-center">
-                                    <RefreshCw className="w-6 h-6 text-primary mr-2" />
-                                    <span className="text-sm p-1">Free 30-day returns</span>
-                                </div>
-                                <div className="flex items-center">
-                                    <Shield className="w-6 h-6 text-primary mr-2" />
-                                    <span className="text-sm p-1">2-year warranty</span>
-                                </div>
-                            </div>
+                    {/* Chọn size */}
+                    <div className="mb-4">
+                        <h5>Chọn size:</h5>
+                        <div className="d-flex flex-wrap gap-2">
+                            {product.sizes.map((size) => (
+                                <Button
+                                    key={size}
+                                    variant={selectedSize === size ? 'primary' : 'outline-secondary'}
+                                    onClick={() => setSelectedSize(size)}
+                                    className="flex-grow-0"
+                                    style={{ minWidth: '60px' }} // hoặc điều chỉnh tùy ý
+                                >
+                                    {size}
+                                </Button>
+                            ))}
                         </div>
                     </div>
-                </div>
 
 
-                {/* Product info */}
+                    {/* Chọn số lượng */}
+                    <div className="mb-4">
+                        <h5>Số lượng:</h5>
+                        <div className="d-flex align-items-center">
+                            <Button onClick={handleDecreaseQuantity} variant="outline-secondary">
+                                <Minus />
+                            </Button>
+                            <input
+                                type="text"
+                                className="form-control text-center mx-2"
+                                value={quantity}
+                                readOnly
+                                style={{ width: '60px' }}
+                            />
+                            <Button onClick={handleIncreaseQuantity} variant="outline-secondary">
+                                <Plus />
+                            </Button>
+                        </div>
+                    </div>
 
+                    {/* Thêm vào giỏ */}
+                    <Button
+                        variant="success"
+                        size="lg"
+                        className="w-100 mb-4"
+                        onClick={handleAddToCart}
+                    >
+                        Thêm vào giỏ hàng
+                    </Button>
+
+                    {/* Chính sách */}
+                    <Row className="text-center">
+                        <Col>
+                            <Truck className="text-primary mb-2" />
+                            <p>Miễn phí vận chuyển trên $100</p>
+                        </Col>
+                        <Col>
+                            <RefreshCw className="text-primary mb-2" />
+                            <p>Đổi trả trong 30 ngày</p>
+                        </Col>
+                        <Col>
+                            <Shield className="text-primary mb-2" />
+                            <p>Bảo hành 2 năm</p>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+
+            {/* ----------- SẢN PHẨM LIÊN QUAN ----------- */}
+            <div className="related-products mt-5">
+                <h3 className="mb-4">Sản phẩm liên quan</h3>
+                <Row>
+                    {relatedProducts.map(item => (
+                        <Col key={item.id} md={4} className="mb-4">
+                            <Card className="h-100 shadow-sm border-0">
+                                <Card.Img
+                                    variant="top"
+                                    src={item.images[0]}
+                                    style={{ height: '250px', objectFit: 'cover' }}
+                                />
+                                <Card.Body className="d-flex flex-column">
+                                    <Badge bg="secondary" className="mb-2">{item.category}</Badge>
+                                    <Card.Title className="fs-5">{item.name}</Card.Title>
+                                    <Card.Text className="text-danger fw-bold">${item.price.toFixed(2)}</Card.Text>
+
+                                    <Button
+                                        as={Link}
+                                        to={`/product/${item.id}`}
+                                        variant="outline-primary"
+                                        className="mt-auto"
+                                    >
+                                        Xem chi tiết
+                                    </Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
             </div>
         </div>
     );
