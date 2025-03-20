@@ -1,47 +1,24 @@
 /* eslint-disable no-unused-vars */
 import { ShoppingBag, Trash2 } from 'lucide-react';
-import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useOrder } from '../../../context/ContextAPI';
+
 
 const CartIcon = () => {
+    const { orderList, removeFromOrder, updateOrderQuantity } = useOrder();
     const [cartOpen, setCartOpen] = useState(false);
-    const [cartItems, setCartItems] = useState([
-        {
-            id: 1,
-            name: "Nike Air Max",
-            size: "10",
-            color: "Black",
-            price: 129.99,
-            image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff"
-        },
-        {
-            id: 2,
-            name: "Adidas Ultra Boost",
-            size: "9",
-            color: "White",
-            price: 159.99,
-            image: "https://images.unsplash.com/photo-1560769629-975ec94e6a86"
-        },
-        {
-            id: 3,
-            name: "New Balance 574",
-            size: "8.5",
-            color: "Gray",
-            price: 84.99,
-            image: "https://images.unsplash.com/photo-1549298916-b41d501d3772"
-        }
-    ]);
-
+    const [cartItems, setCartItems] = useState(orderList);
+    useEffect(() => {
+        setCartItems(orderList);
+    }, [orderList]);
     const navigate = useNavigate();
-
-    const handleRemoveItem = (id) => {
-        const updatedCart = cartItems.filter(item => item.id !== id);
-        setCartItems(updatedCart);
-    };
-
     const handleNavigate = (path) => {
         setCartOpen(false);
         navigate(path);
+    };
+    const handleRemoveItem = (id) => {
+        removeFromOrder(id);
     };
 
     const subtotal = cartItems.reduce((total, item) => total + item.price, 0);
@@ -82,7 +59,7 @@ const CartIcon = () => {
                                 <div className="flex-grow-1">
                                     <p className="mb-1 fw-medium">{item.name}</p>
                                     <small className="text-muted">
-                                        Size: {item.size} | {item.color}
+                                        Size: {item.size}
                                     </small>
                                     <p className="mb-0 fw-semibold text-primary">${item.price.toFixed(2)}</p>
                                 </div>

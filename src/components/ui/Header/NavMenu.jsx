@@ -25,7 +25,7 @@ const NavMenu = () => {
             </NavDropdown>
 
             {/* Blog */}
-            <Nav.Link as={Link} to="/blog" className="text-dark">
+            <Nav.Link as={Link} to="/blogs" className="text-dark">
                 Blog
             </Nav.Link>
 

@@ -8,11 +8,14 @@ import {
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // import { getProductById } from '../api/products';
+import { useOrder } from '../../../context/ContextAPI';
 import products from "../../../Data/products.json";
 import "./ProductDetail.css";
 import RatingStars from './RatingStars';
 
+
 const ProductDetail = () => {
+    const { addToOrder } = useOrder();
     const { productId } = useParams(); // Lấy id từ URL
     const productIdd = parseInt(productId); // Đổi về số nếu id là số
     const product = products.find((item) => item.id === productIdd);
@@ -64,8 +67,20 @@ const ProductDetail = () => {
             return;
         }
 
+        const orderItem = {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: quantity,
+            size: selectedSize,
+            image: selectedImage
+        };
+
+        addToOrder(orderItem);
+
         alert(`Added ${quantity} ${product.name} (Size: ${selectedSize}) to cart`);
     };
+
 
     return (
         <div className=" mx-auto px-4 mr-5 ml-2">
