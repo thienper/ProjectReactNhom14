@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import blogs from "../Data/blogs.json";

@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import { Button, Card, Col, Form, Row, Table } from 'react-bootstrap';
 import { useOrder } from '../context/ContextAPI';
 import { Link } from 'react-router-dom';

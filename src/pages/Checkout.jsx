@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Card, Col, Form, Row, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useOrder } from '../context/ContextAPI';
@@ -8,7 +8,7 @@ const Checkout = () => {
     const navigate = useNavigate();
 
     // Lấy thông tin user từ localStorage (đã đăng nhập)
-    const [user, setUser] = useState(() => {
+    const [user] = useState(() => {
         const storedUser = localStorage.getItem('user');
         return storedUser ? JSON.parse(storedUser) : null;
     });

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
 import ReactPaginate from 'react-paginate';
 import { Link } from "react-router-dom";
@@ -53,7 +53,7 @@ const NewArrivals = () => {
                                         <p className="text-muted">{product.category}</p>
                                     </div>
                                     <div className="d-flex justify-content-between align-items-center mt-3">
-                                        <h5 className="text-primary fw-bold">{product.price}</h5>
+                                        <h5 className="text-primary fw-bold">{product.price}$</h5>
 
                                         <Button as={Link} to={`/product/${product.id}`}
                                             className="btn btn-dark btn-sm d-flex align-items-center"

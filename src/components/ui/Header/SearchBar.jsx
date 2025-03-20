@@ -1,5 +1,5 @@
 import { Search } from 'lucide-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Form, FormControl, Image, InputGroup, ListGroup } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import products from "../../../Data/products.json";

@@ -1,5 +1,5 @@
 import { Minus, Plus, RefreshCw, Shield, Truck } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import { useOrder } from '../../../context/ContextAPI';
