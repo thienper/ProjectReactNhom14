@@ -51,9 +51,9 @@
         "originalPrice": 189.99,
         "discount": 0,
         "images": [
-            "https://images.unsplash.com/photo-1621881538090-b2b5ffaa25b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-            "https://images.unsplash.com/photo-1618666012174-83b441c0bc76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
-            "https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80",
+            "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80",
+            "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80"
         ],
         "colors": [
             "Black",
@@ -97,7 +97,7 @@
         "originalPrice": 95,
         "discount": 16,
         "images": [
-            "https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1121&q=80",
+            "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
             "https://images.unsplash.com/photo-1562183241-b937e95585b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
             "https://images.unsplash.com/photo-1608379743498-91dbfa48bed3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
         ],
@@ -288,9 +288,9 @@
         "originalPrice": 159.99,
         "discount": 0,
         "images": [
-            "https://images.unsplash.com/photo-1562183241-840b8af0721d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
-            "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80",
-            "https://images.unsplash.com/photo-1605034313761-73ea4a0cfb80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+            "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
+            "https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+            "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
         ],
         "colors": [
             "Blue/Red",
@@ -549,6 +549,102 @@
         ],
         "category": "Casual",
         "gender": "Unisex",
+        "rating": 4.7,
+        "reviewCount": 278,
+        "description": "The Vans Slip-Ons are a low-profile slip-on with canvas uppers, elastic side accents, padded collars, and signature rubber waffle outsoles. This simple yet iconic style has become a staple in casual footwear since its introduction in 1977.",
+        "features": [
+            "Canvas upper for breathability and comfort",
+            "Elastic side accents for easy on and off",
+            "Padded collars for added comfort",
+            "Signature rubber waffle outsoles for grip",
+            "Vans \"Off The Wall\" heel logo"
+        ],
+        "isFeatured": false,
+        "isNewArrival": false,
+        "stock": 38
+    }, 
+    {
+        "id": 13,
+        "name": "Slip-Ons",
+        "brand": "Vans",
+        "price": 55,
+        "originalPrice": 60,
+        "discount": 8,
+        "images": [
+            "https://plus.unsplash.com/premium_photo-1670574914335-0bcd4a768d76?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHNhbmRhbHMlMjB3b21lbnxlbnwwfHwwfHx8MA%3D%3D",
+            "https://plus.unsplash.com/premium_photo-1670574914335-0bcd4a768d76?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHNhbmRhbHMlMjB3b21lbnxlbnwwfHwwfHx8MA%3D%3D",
+            "https://plus.unsplash.com/premium_photo-1670574914335-0bcd4a768d76?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHNhbmRhbHMlMjB3b21lbnxlbnwwfHwwfHx8MA%3D%3D"
+        ],
+        "colors": [
+            "Black/White Checkerboard",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            5,
+            5.5,
+            6,
+            6.5,
+            7,
+            7.5,
+            8,
+            8.5,
+            9,
+            9.5,
+            10,
+            10.5,
+            11
+        ],
+        "category": "Heel",
+        "gender": "WomenH",
+        "rating": 4.7,
+        "reviewCount": 278,
+        "description": "The Vans Slip-Ons are a low-profile slip-on with canvas uppers, elastic side accents, padded collars, and signature rubber waffle outsoles. This simple yet iconic style has become a staple in casual footwear since its introduction in 1977.",
+        "features": [
+            "Canvas upper for breathability and comfort",
+            "Elastic side accents for easy on and off",
+            "Padded collars for added comfort",
+            "Signature rubber waffle outsoles for grip",
+            "Vans \"Off The Wall\" heel logo"
+        ],
+        "isFeatured": false,
+        "isNewArrival": false,
+        "stock": 38
+    },
+    {
+        "id": 14,
+        "name": "Slip-Ons",
+        "brand": "Vans",
+        "price": 55,
+        "originalPrice": 60,
+        "discount": 8,
+        "images": [
+            "https://images.unsplash.com/photo-1554062614-6da4fa67725a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1554062614-6da4fa67725a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1554062614-6da4fa67725a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "colors": [
+            "Black/White Checkerboard",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            5,
+            5.5,
+            6,
+            6.5,
+            7,
+            7.5,
+            8,
+            8.5,
+            9,
+            9.5,
+            10,
+            10.5,
+            11
+        ],
+        "category": "Sandal",
+        "gender": "WomenS",
         "rating": 4.7,
         "reviewCount": 278,
         "description": "The Vans Slip-Ons are a low-profile slip-on with canvas uppers, elastic side accents, padded collars, and signature rubber waffle outsoles. This simple yet iconic style has become a staple in casual footwear since its introduction in 1977.",
