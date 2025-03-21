@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { Button } from "react-bootstrap";
 import {
   FaChevronDown,
@@ -67,34 +68,30 @@ const WomensSports = () => {
               .filter((product) => product.gender === "Nữ")
               .slice(0, 30);
 
-        const fallbackReviews = [
-          {
-            name: "Nguyễn Thị Hương",
-            location: "Hà Nội",
-            image:
-              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-            rating: 5,
-            text: "Tôi đã mua đôi giày cao gót từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với nhiều trang phục khác nhau.",
-          },
-          {
-            name: "Trần Minh Anh",
-            location: "TP. Hồ Chí Minh",
-            image:
-              "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-            rating: 4,
-            text: "Giày cao gót rất đẹp và đúng với hình ảnh trên website. Chất lượng tốt, đi êm chân, chỉ hơi đau chút sau khi đi cả ngày.",
-          },
-          {
-            name: "Lê Thanh Hà",
-            location: "Đà Nẵng",
-            image:
-              "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80",
-            rating: 5,
-            text: "Sản phẩm đúng với mô tả, phù hợp với cả trang phục công sở và dạ tiệc. Tôi sẽ mua thêm đôi khác trong tương lai.",
-          },
-        ];
-
-        setReviews(fallbackReviews);
+              try {
+                const reviewResponse = await axios.get(
+                  "https://67dbd6fd1fd9e43fe476247e.mockapi.io/reviews"
+                );
+                const reviewData = reviewResponse.data;
+      
+                let reviewsToUse = Array.isArray(reviewData)
+                  ? reviewData
+                  : reviewData.reviews || reviewData.items || [];
+      
+                setReviews(reviewsToUse.slice(0, 6));
+              } catch (reviewError) {
+                console.error("Error loading reviews:", reviewError);
+                setReviews([
+                  {
+                    name: "Nguyễn Thị Hương",
+                    location: "Hà Nội",
+                    image:
+                      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                    rating: 5,
+                    text: "Tôi đã mua đôi dép xăng đan từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với thời tiết mùa hè.",
+                  },
+                ]);
+              }
 
         const enhancedData = productsToUse.map((product) => ({
           ...product,
@@ -331,7 +328,7 @@ const WomensSports = () => {
     },
     {
       name: "Steve Madden",
-      logo: "https://images.unsplash.com/photo-1554238113-6d3dbed5cf6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6mZKV3IQcBSzFkNB9FYf5F4RM4yeNHxaEyRMsy9J7kpNyqp492IM6FTvkgIrD8PdBd90&usqp=CAU",
     },
   ];
 

@@ -607,7 +607,7 @@
         "id": 14,
         "name": "Charles & Keith Pointed Heels",
         "brand": "Charles & Keith",
-        "price": 75,
+        "price": 1750000,
         "originalPrice": 95,
         "discount": 21,
         "images": [
@@ -683,15 +683,13 @@
     },
     {
         "id": 16,
-        "name": "H&M Cross-Strap Sandals",
+        "name": "Strappy Ridged-Sole Flatform Sandals - White",
         "brand": "H&M",
-        "price": 35,
+        "price": 1650000,
         "originalPrice": 50,
         "discount": 30,
         "images": [
-            "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5c%2F00%2F5c00bbd98ba649e8f04e04dcbade067b38e9b6e3.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
-            "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5c%2F00%2F5c00bbd98ba649e8f04e04dcbade067b38e9b6e3.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
-            "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5c%2F00%2F5c00bbd98ba649e8f04e04dcbade067b38e9b6e3.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]"
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw0b6b8b9d/images/hi-res/2025-L2-CK1-80360153-03-1.jpg?sw=1152&sh=1536"
         ],
         "colors": [
             "White",
@@ -800,7 +798,7 @@
         "id": 19,
         "name": "Classic Nude Heels",
         "brand": "Charles & Keith",
-        "price": 75,
+        "price": 1550000,
         "originalPrice": 100,
         "discount": 25,
         "images": [
@@ -992,15 +990,15 @@
     },
     {
         "id": 24,
-        "name": "Giày Cao Gót Đính Đá",
+        "name": "Satin Crystal-Embellished Block-Heel Strappy",
         "brand": "Jimmy Choo",
-        "price": 350,
+        "price": 1350000,
         "originalPrice": 400,
         "discount": 12,
         "images": [
-            "https://images.pexels.com/photos/8041381/pexels-photo-8041381.jpeg",
-            "https://images.pexels.com/photos/8041382/pexels-photo-8041382.jpeg",
-            "https://images.pexels.com/photos/8041378/pexels-photo-8041378.jpeg"
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw15165cc2/images/hi-res/2024-L7-CK1-60190351-J5-1.jpg?sw=1152&sh=1536",
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw15165cc2/images/hi-res/2024-L7-CK1-60190351-J5-1.jpg?sw=1152&sh=1536",
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw15165cc2/images/hi-res/2024-L7-CK1-60190351-J5-1.jpg?sw=1152&sh=1536"
         ],
         "colors": [
             "Bạc",
@@ -1030,19 +1028,17 @@
     },
     {
         "id": 25,
-        "name": "Sandal Nữ Quai Chéo",
+        "name": "Buckled Double-Strap Slingback Sandals - Chalk",
         "brand": "Birkenstock",
-        "price": 80,
+        "price": 1850000,
         "originalPrice": 100,
         "discount": 20,
         "images": [
-            "https://images.pexels.com/photos/7697310/pexels-photo-7697310.jpeg",
-            "https://images.pexels.com/photos/7697326/pexels-photo-7697326.jpeg",
-            "https://images.pexels.com/photos/7697313/pexels-photo-7697313.jpeg"
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw413cd46c/images/hi-res/2025-L2-CK1-70381109-41-1.jpg?sw=1152&sh=1536",
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw413cd46c/images/hi-res/2025-L2-CK1-70381109-41-1.jpg?sw=1152&sh=1536",
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw413cd46c/images/hi-res/2025-L2-CK1-70381109-41-1.jpg?sw=1152&sh=1536"
         ],
         "colors": [
-            "Nâu",
-            "Đen",
             "Kem"
         ],
         "sizes": [
@@ -1108,15 +1104,13 @@
     },
     {
         "id": 27,
-        "name": "Sandal Nữ Đế Bệt Quai Ngang",
+        "name": "Satin Crystal-Embellished Block-Heel Strappy Sandals - White",
         "brand": "Charles & Keith",
-        "price": 70,
+        "price": 1700000,
         "originalPrice": 90,
         "discount": 22,
         "images": [
-            "https://images.pexels.com/photos/6311653/pexels-photo-6311653.jpeg",
-            "https://images.pexels.com/photos/6311651/pexels-photo-6311651.jpeg",
-            "https://images.pexels.com/photos/6311649/pexels-photo-6311649.jpeg"
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dwbb2349a3/images/hi-res/2024-L2-CK1-60051031-03-1.jpg?sw=756&sh=1008"
         ],
         "colors": [
             "Be",
@@ -1185,9 +1179,9 @@
     },
     {
         "id": 29,
-        "name": "Giày Cao Gót Nữ Mũi Nhọn",
+        "name": "Sylva Block-Heel - Chalk",
         "brand": "Christian Louboutin",
-        "price": 400,
+        "price": 1400000,
         "originalPrice": 450,
         "discount": 11,
         "images": [
@@ -1225,15 +1219,13 @@
     },
     {
         "id": 30,
-        "name": "Giày Thể Thao Nữ Adidas Ultraboost",
+        "name": "Adizero EVO SL Shoes",
         "brand": "Adidas",
-        "price": 200,
+        "price": 2000000,
         "originalPrice": 240,
         "discount": 16,
         "images": [
-            "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
-            "https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg",
-            "https://images.pexels.com/photos/1124466/pexels-photo-1124466.jpeg"
+            "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/68511e82a0f4412cb14e9f63fb1bd704_9366/adizero-evo-sl-shoes.jpg"
         ],
         "colors": [
             "Hồng",
@@ -1340,15 +1332,15 @@
     },
     {
         "id": 33,
-        "name": "Giày Cao Gót Nữ Quai Ngang Trong Suốt",
+        "name": "Strappy Block-Heel Slingback Sandals - Black Boxed",
         "brand": "Steve Madden",
-        "price": 110,
+        "price": 1100000,
         "originalPrice": 130,
         "discount": 15,
         "images": [
-            "https://images.pexels.com/photos/8041382/pexels-photo-8041382.jpeg",
-            "https://images.pexels.com/photos/8041381/pexels-photo-8041381.jpeg",
-            "https://images.pexels.com/photos/8041378/pexels-photo-8041378.jpeg"
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw5be8299b/images/hi-res/2025-L2-CK1-60280469-07-1.jpg?sw=1152&sh=1536",
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw5be8299b/images/hi-res/2025-L2-CK1-60280469-07-1.jpg?sw=1152&sh=1536",
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw5be8299b/images/hi-res/2025-L2-CK1-60280469-07-1.jpg?sw=1152&sh=1536"
         ],
         "colors": [
             "Trong suốt",
@@ -1417,15 +1409,13 @@
     },
     {
         "id": 35,
-        "name": "Sandal Nữ Đế Xuồng Thắt Nơ",
+        "name": "Buckled Double-Strap Slingback Sandals - Black Boxed",
         "brand": "Tory Burch",
-        "price": 130,
+        "price": 1850000,
         "originalPrice": 150,
-        "discount": 13,
+        "discount": 11,
         "images": [
-            "https://images.pexels.com/photos/7697310/pexels-photo-7697310.jpeg",
-            "https://images.pexels.com/photos/7697326/pexels-photo-7697326.jpeg",
-            "https://images.pexels.com/photos/7697310/pexels-photo-7697310.jpeg"
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw873e8dca/images/hi-res/2025-L2-CK1-70381109-J6-1.jpg?sw=756&sh=1008"
         ],
         "colors": [
             "Kem",
@@ -1453,5 +1443,300 @@
         "isFeatured": false,
         "isNewArrival": true,
         "stock": 26
+    },
+    {
+        "id": 36,
+        "name": "Samala Buckled Triple-Strap Sandals - Black Boxed",
+        "brand": "Tory Burch",
+        "price": 1650000,
+        "originalPrice": 150,
+        "discount": 10,
+        "images": [
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dwa46ba1ed/images/hi-res/2024-L3-CK1-70580226-J6-1.jpg?sw=756&sh=1008"
+        ],
+        "colors": [
+            "Kem",
+            "Hồng",
+            "Đen"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Sandal",
+        "gender": "Nữ",
+        "type": "Sandal",
+        "rating": 4.7,
+        "reviewCount": 190,
+        "description": "Sandal đế xuồng thắt nơ nhẹ nhàng, phù hợp với phong cách nữ tính và năng động mùa hè.",
+        "features": [
+            "Đế xuồng 5cm",
+            "Quai vải thắt nơ",
+            "Đệm lót êm ái"
+        ],
+        "isFeatured": false,
+        "isNewArrival": true,
+        "stock": 26
+    },
+    {
+        "id": 37,
+        "name": "Jadis Chunky Flatform Sandals - Chalk",
+        "brand": "Tory Burch",
+        "price": 1750000,
+        "originalPrice": 150,
+        "discount": 13,
+        "images": [
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dwa22113ac/images/hi-res/2023-L6-CK1-70381004-41-1.jpg?sw=756&sh=1008"
+        ],
+        "colors": [
+            "Kem",
+            "Hồng",
+            "Đen"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Sandal",
+        "gender": "Nữ",
+        "type": "Sandal",
+        "rating": 4.7,
+        "reviewCount": 190,
+        "description": "Sandal đế xuồng thắt nơ nhẹ nhàng, phù hợp với phong cách nữ tính và năng động mùa hè.",
+        "features": [
+            "Đế xuồng 5cm",
+            "Quai vải thắt nơ",
+            "Đệm lót êm ái"
+        ],
+        "isFeatured": false,
+        "isNewArrival": true,
+        "stock": 26
+    },
+    {
+        "id": 38,
+        "name": "Kirke Buckled Double-Strap - Heels",
+        "brand": "Steve Madden",
+        "price": 1100000,
+        "originalPrice": 130,
+        "discount": 15,
+        "images": [
+            "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-vn-products/default/dw4d134722/images/hi-res/2025-L2-CK1-60280472-J6-1.jpg?sw=1152&sh=1536"
+        ],
+        "colors": [
+            "Trong suốt",
+            "Be"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày cao gót",
+        "gender": "Nữ",
+        "type": "Cao gót",
+        "rating": 4.5,
+        "reviewCount": 85,
+        "description": "Giày cao gót với quai ngang trong suốt giúp kéo dài đôi chân, phong cách hiện đại và thanh lịch.",
+        "features": [
+            "Quai nhựa PVC trong suốt",
+            "Gót vuông 8cm chắc chắn",
+            "Đế cao su chống trượt"
+        ],
+        "isFeatured": false,
+        "isNewArrival": true,
+        "stock": 18
+    },
+    {
+        "id": 39,
+        "name": "Adizero Prime X 2.0 STRUNG Shoes",
+        "brand": "Adidas",
+        "price": 2500000,
+        "originalPrice": 240,
+        "discount": 11,
+        "images": [
+            "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/1c199d62cc1c44beac62b6090274c5c2_9366/adizero-prime-x-2.0-strung-shoes.jpg"
+        ],
+        "colors": [
+            "Hồng",
+            "Trắng",
+            "Xám"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nữ",
+        "type": "Thể thao",
+        "rating": 4.8,
+        "reviewCount": 410,
+        "description": "Ultraboost nổi bật với phần đế Boost êm ái, hỗ trợ tối đa cho các vận động viên chuyên nghiệp và người dùng yêu thích vận động.",
+        "features": [
+            "Đệm Boost siêu nhẹ",
+            "Thân giày Primeknit co giãn",
+            "Đế ngoài Stretchweb linh hoạt"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 22
+    },
+    {
+        "id": 40,
+        "name": "Adizero Adios Pro 4 Shoes",
+        "brand": "Adidas",
+        "price": 2200000,
+        "originalPrice": 240,
+        "discount": 16,
+        "images": [
+            "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/7b5b40e8798e485bacdf8ec68acd295d_9366/adizero-adios-pro-4-shoes.jpg"
+        ],
+        "colors": [
+            "Hồng",
+            "Trắng",
+            "Xám"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nữ",
+        "type": "Thể thao",
+        "rating": 4.8,
+        "reviewCount": 410,
+        "description": "Ultraboost nổi bật với phần đế Boost êm ái, hỗ trợ tối đa cho các vận động viên chuyên nghiệp và người dùng yêu thích vận động.",
+        "features": [
+            "Đệm Boost siêu nhẹ",
+            "Thân giày Primeknit co giãn",
+            "Đế ngoài Stretchweb linh hoạt"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 22
+    },
+    {
+        "id": 41,
+        "name": "Adizero Adios 9 Running Shoes",
+        "brand": "Adidas",
+        "price": 2000000,
+        "originalPrice": 240,
+        "discount": 20,
+        "images": [
+            "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/4b474b5cd74f45c79ac31479e85c0ee3_9366/adizero-adios-9-running-shoes.jpg"
+        ],
+        "colors": [
+            "Hồng",
+            "Trắng",
+            "Xám"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nữ",
+        "type": "Thể thao",
+        "rating": 4.8,
+        "reviewCount": 410,
+        "description": "Ultraboost nổi bật với phần đế Boost êm ái, hỗ trợ tối đa cho các vận động viên chuyên nghiệp và người dùng yêu thích vận động.",
+        "features": [
+            "Đệm Boost siêu nhẹ",
+            "Thân giày Primeknit co giãn",
+            "Đế ngoài Stretchweb linh hoạt"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 22
+    },
+    {
+        "id": 42,
+        "name": "Adizero SL2 Running Shoes",
+        "brand": "Adidas",
+        "price": 1900000,
+        "originalPrice": 240,
+        "discount": 16,
+        "images": [
+            "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/68ee64956bf14b6cbbc6f51ff0a39088_9366/adizero-sl2-running-shoes.jpg"
+        ],
+        "colors": [
+            "Hồng",
+            "Trắng",
+            "Xám"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nữ",
+        "type": "Thể thao",
+        "rating": 4.8,
+        "reviewCount": 410,
+        "description": "Ultraboost nổi bật với phần đế Boost êm ái, hỗ trợ tối đa cho các vận động viên chuyên nghiệp và người dùng yêu thích vận động.",
+        "features": [
+            "Đệm Boost siêu nhẹ",
+            "Thân giày Primeknit co giãn",
+            "Đế ngoài Stretchweb linh hoạt"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 22
+    },
+    {
+        "id": 43,
+        "name": "Adizero Prime X 2.0 STRUNG Shoes",
+        "brand": "Adidas",
+        "price": 1950000,
+        "originalPrice": 240,
+        "discount": 16,
+        "images": [
+            "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/d070ed4677b9411285a38f6bc208be1e_9366/adizero-prime-x-2.0-strung-shoes.jpg"
+        ],
+        "colors": [
+            "Hồng",
+            "Trắng",
+            "Xám"
+        ],
+        "sizes": [
+            36,
+            37,
+            38,
+            39,
+            40
+        ],
+        "category": "Giày thể thao",
+        "gender": "Nữ",
+        "type": "Thể thao",
+        "rating": 4.8,
+        "reviewCount": 410,
+        "description": "Ultraboost nổi bật với phần đế Boost êm ái, hỗ trợ tối đa cho các vận động viên chuyên nghiệp và người dùng yêu thích vận động.",
+        "features": [
+            "Đệm Boost siêu nhẹ",
+            "Thân giày Primeknit co giãn",
+            "Đế ngoài Stretchweb linh hoạt"
+        ],
+        "isFeatured": true,
+        "isNewArrival": true,
+        "stock": 22
     }
 ]

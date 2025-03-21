@@ -65,7 +65,7 @@ const WomensSandals = () => {
             ? reviewData
             : reviewData.reviews || reviewData.items || [];
 
-          setReviews(reviewsToUse.slice(0, 3));
+          setReviews(reviewsToUse.slice(0, 6));
         } catch (reviewError) {
           console.error("Error loading reviews:", reviewError);
           setReviews([
@@ -281,11 +281,11 @@ const WomensSandals = () => {
     },
     {
       name: "Teva",
-      logo: "https://images.unsplash.com/photo-1531911617563-5faaf4a478df?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+      logo: "https://www.sockshopandshoeco.com/cdn/shop/collections/teva-logo.jpg?v=1594674545",
     },
     {
       name: "Ipanema",
-      logo: "https://images.unsplash.com/photo-1612015709104-c7f8cafbdeed?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+      logo: "https://assets.brazilianfootwear.com/brands/thumbs/md/7ffdaddc86096aebff7692c78bc6171c.jpg",
     },
   ];
 
