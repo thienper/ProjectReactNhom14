@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Air Max 90",
         "brand": "Nike",
-        "price": 129.99,
+        "price": 1290000,
         "originalPrice": 150,
         "discount": 13,
         "images": [
@@ -47,7 +47,7 @@
         "id": 2,
         "name": "Ultraboost 22",
         "brand": "Adidas",
-        "price": 189.99,
+        "price": 1899000,
         "originalPrice": 189.99,
         "discount": 0,
         "images": [
@@ -93,7 +93,7 @@
         "id": 3,
         "name": "Classic Leather",
         "brand": "Reebok",
-        "price": 80,
+        "price": 1800000,
         "originalPrice": 95,
         "discount": 16,
         "images": [
@@ -138,7 +138,7 @@
         "id": 4,
         "name": "Chuck Taylor All Star",
         "brand": "Converse",
-        "price": 60,
+        "price": 1200000,
         "originalPrice": 60,
         "discount": 0,
         "images": [
@@ -189,7 +189,7 @@
         "id": 5,
         "name": "Old Skool",
         "brand": "Vans",
-        "price": 70,
+        "price": 1320000,
         "originalPrice": 70,
         "discount": 0,
         "images": [
@@ -237,7 +237,7 @@
         "id": 6,
         "name": "Fresh Foam 1080v11",
         "brand": "New Balance",
-        "price": 149.99,
+        "price": 1499900,
         "originalPrice": 159.99,
         "discount": 6,
         "images": [
@@ -284,7 +284,7 @@
         "id": 7,
         "name": "Gel-Kayano 28",
         "brand": "ASICS",
-        "price": 159.99,
+        "price": 1599900,
         "originalPrice": 159.99,
         "discount": 0,
         "images": [
@@ -328,7 +328,7 @@
         "id": 8,
         "name": "Speedcross 5",
         "brand": "Salomon",
-        "price": 130,
+        "price": 1300000,
         "originalPrice": 140,
         "discount": 7,
         "images": [
@@ -374,7 +374,7 @@
         "id": 9,
         "name": "Suede Classic XXI",
         "brand": "Puma",
-        "price": 70,
+        "price": 1340000,
         "originalPrice": 80,
         "discount": 12,
         "images": [
@@ -420,7 +420,7 @@
         "id": 10,
         "name": "Stan Smith",
         "brand": "Adidas",
-        "price": 85,
+        "price": 1850000,
         "originalPrice": 85,
         "discount": 0,
         "images": [
@@ -471,7 +471,7 @@
         "id": 11,
         "name": "Air Jordan 1 Retro High OG",
         "brand": "Nike",
-        "price": 180,
+        "price": 1800000,
         "originalPrice": 180,
         "discount": 0,
         "images": [
@@ -519,7 +519,7 @@
         "id": 12,
         "name": "Slip-Ons",
         "brand": "Vans",
-        "price": 55,
+        "price": 1515000,
         "originalPrice": 60,
         "discount": 8,
         "images": [
@@ -567,7 +567,7 @@
         "id": 13,
         "name": "Nike Air Max 270",
         "brand": "Nike",
-        "price": 150,
+        "price": 1500000,
         "originalPrice": 180,
         "discount": 17,
         "images": [
@@ -646,7 +646,7 @@
         "id": 15,
         "name": "Clarks Tilden Cap Oxford",
         "brand": "Clarks",
-        "price": 120,
+        "price": 1200000,
         "originalPrice": 150,
         "discount": 20,
         "images": [
@@ -721,7 +721,7 @@
         "id": 17,
         "name": "Teva Hurricane XLT2",
         "brand": "Teva",
-        "price": 80,
+        "price": 1800000,
         "originalPrice": 100,
         "discount": 20,
         "images": [
@@ -759,7 +759,7 @@
         "id": 18,
         "name": "Adidas Ultraboost",
         "brand": "Adidas",
-        "price": 180,
+        "price": 1800000,
         "originalPrice": 220,
         "discount": 18,
         "images": [
@@ -836,7 +836,7 @@
         "id": 20,
         "name": "Leather Sandals",
         "brand": "ECCO",
-        "price": 90,
+        "price": 1900000,
         "originalPrice": 120,
         "discount": 25,
         "images": [
@@ -873,7 +873,7 @@
         "id": 21,
         "name": "Nike Air Max 270",
         "brand": "Nike",
-        "price": 150,
+        "price": 1500000,
         "originalPrice": 180,
         "discount": 17,
         "images": [
@@ -914,7 +914,7 @@
         "id": 22,
         "name": "Adidas Superstar",
         "brand": "Adidas",
-        "price": 90,
+        "price": 1900000,
         "originalPrice": 110,
         "discount": 18,
         "images": [
@@ -953,7 +953,7 @@
         "id": 23,
         "name": "Giày Tây Oxford Brogue",
         "brand": "Clarks",
-        "price": 120,
+        "price": 1200000,
         "originalPrice": 150,
         "discount": 20,
         "images": [
@@ -1067,7 +1067,7 @@
         "id": 26,
         "name": "Giày Thể Thao Nam Jordan Retro",
         "brand": "Nike",
-        "price": 220,
+        "price": 2200000,
         "originalPrice": 250,
         "discount": 12,
         "images": [
@@ -1143,7 +1143,7 @@
         "id": 28,
         "name": "Giày Tây Nam Derby",
         "brand": "Ecco",
-        "price": 180,
+        "price": 1800000,
         "originalPrice": 210,
         "discount": 14,
         "images": [
@@ -1258,7 +1258,7 @@
         "id": 31,
         "name": "Sandal Nam Quai Ngang",
         "brand": "Teva",
-        "price": 85,
+        "price": 1815000,
         "originalPrice": 100,
         "discount": 15,
         "images": [
@@ -1296,7 +1296,7 @@
         "id": 32,
         "name": "Giày Tây Nam Loafer Da Lộn",
         "brand": "Gucci",
-        "price": 350,
+        "price": 1350000,
         "originalPrice": 400,
         "discount": 13,
         "images": [
@@ -1372,7 +1372,7 @@
         "id": 34,
         "name": "Giày Thể Thao Nam Puma RS-X",
         "brand": "Puma",
-        "price": 160,
+        "price": 1600000,
         "originalPrice": 190,
         "discount": 15,
         "images": [

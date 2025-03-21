@@ -7,6 +7,15 @@ import products from "../../../Data/products.json";
 import "./ProductDetail.css";
 import RatingStars from './RatingStars';
 
+// Hàm định dạng tiền tệ Việt Nam
+const formatCurrency = (price) => {
+    return new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+        maximumFractionDigits: 0
+    }).format(price); // Quy đổi từ USD sang VND với tỷ giá ước tính
+};
+
 const ProductDetail = () => {
     const { addToOrder } = useOrder();
     const { productId } = useParams();
@@ -15,10 +24,12 @@ const ProductDetail = () => {
 
     const [quantity, setQuantity] = useState(1);
     const [selectedSize, setSelectedSize] = useState('');
-    const [selectedImage, setSelectedImage] = useState(product.images[0]);
+    const [selectedImage, setSelectedImage] = useState(product?.images[0] || '');
+    
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [productId]);
+    
     useEffect(() => {
         if (product && product.images && product.images.length > 0) {
             setSelectedImage(product.images[0]);
@@ -67,8 +78,6 @@ const ProductDetail = () => {
 
     return (
         <div className="my-5 container-custom">
-
-
             <Row className="gap-4 justify-content-evenly">
                 {/* Ảnh và gallery */}
                 <Col md={5}>
@@ -102,12 +111,12 @@ const ProductDetail = () => {
                         <span className="text-muted small ms-2">({product.reviewCount} đánh giá)</span>
                     </div>
 
-                    {/* Price */}
+                    {/* Price - Định dạng VND */}
                     <div className="price-container mb-4">
-                        <span className="fs-3 fw-bold text-danger">${product.price.toFixed(2)}</span>
+                        <span className="fs-3 fw-bold text-danger">{formatCurrency(product.price)}</span>
                         {product.originalPrice && (
                             <span className="fs-5 text-muted text-decoration-line-through ms-2">
-                                ${product.originalPrice.toFixed(2)}
+                                {formatCurrency(product.originalPrice)}
                             </span>
                         )}
                     </div>
@@ -125,14 +134,13 @@ const ProductDetail = () => {
                                     variant={selectedSize === size ? 'primary' : 'outline-secondary'}
                                     onClick={() => setSelectedSize(size)}
                                     className="flex-grow-0"
-                                    style={{ minWidth: '60px' }} // hoặc điều chỉnh tùy ý
+                                    style={{ minWidth: '60px' }}
                                 >
                                     {size}
                                 </Button>
                             ))}
                         </div>
                     </div>
-
 
                     {/* Chọn số lượng */}
                     <div className="mb-4">
@@ -168,7 +176,7 @@ const ProductDetail = () => {
                     <Row className="text-center">
                         <Col>
                             <Truck className="text-primary mb-2" />
-                            <p>Miễn phí vận chuyển trên $100</p>
+                            <p>Miễn phí vận chuyển trên 2.000.000đ</p>
                         </Col>
                         <Col>
                             <RefreshCw className="text-primary mb-2" />
@@ -197,7 +205,8 @@ const ProductDetail = () => {
                                 <Card.Body className="d-flex flex-column">
                                     <Badge bg="secondary" className="mb-2">{item.category}</Badge>
                                     <Card.Title className="fs-5">{item.name}</Card.Title>
-                                    <Card.Text className="text-danger fw-bold">${item.price.toFixed(2)}</Card.Text>
+                                    {/* Định dạng giá VND cho sản phẩm liên quan */}
+                                    <Card.Text className="text-danger fw-bold">{formatCurrency(item.price)}</Card.Text>
 
                                     <Button
                                         as={Link}

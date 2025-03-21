@@ -4,6 +4,15 @@ import ReactPaginate from 'react-paginate';
 import { Link } from "react-router-dom";
 import productsData from "../../../Data/products.json";
 
+// Hàm định dạng tiền tệ Việt Nam
+const formatCurrency = (price) => {
+    return new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+        maximumFractionDigits: 0
+    }).format(price); // Quy đổi từ USD sang VND với tỷ giá ước tính
+};
+
 const AllProducts = () => {
     const [category, setCategory] = useState('Tất cả danh mục');
     const [brand, setBrand] = useState('Lọc theo hãng');
@@ -123,13 +132,12 @@ const AllProducts = () => {
                                             <p className="text-muted">{product.category}</p>
                                         </div>
                                         <div className="d-flex justify-content-between align-items-center mt-3">
-                                            <h5 className="text-primary fw-bold">{product.price}$</h5>
+                                            {/* Định dạng giá theo tiền VND */}
+                                            <h5 className="text-danger fw-bold">{formatCurrency(product.price)}</h5>
                                             <Button as={Link} to={`/product/${product.id}`}
                                                 className="btn btn-dark btn-sm d-flex align-items-center"
-
                                             >
                                                 Xem thêm
-
                                             </Button>
                                         </div>
                                     </div>
