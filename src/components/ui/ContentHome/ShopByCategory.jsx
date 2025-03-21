@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 import "./ShopByCategory.css";
 
 const ShopByCategory = () => {

@@ -14,10 +14,7 @@ const HeroSection = () => {
                 <p>
                     Khám phá các xu hướng mới nhất về giày dép với bộ sưu tập giày cao cấp độc quyền của chúng tôi cho nam và nữ.
                 </p>
-                <div className="buttons">
-                    <button className="btn btn-light">Giày nam</button>
-                    <button className="btn btn-dark">Giày nữ</button>
-                </div>
+
             </div>
         </div>
     </>
