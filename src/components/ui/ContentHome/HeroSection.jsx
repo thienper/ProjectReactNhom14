@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import giayDauTrang from "../../../assets/images/giay-dau-trang.jpg";
 import "./HeroSection.css";
 

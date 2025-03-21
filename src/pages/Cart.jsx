@@ -14,11 +14,11 @@ const CartPage = () => {
         updateQuantity(id, updatedQuantity);
     };
 
-    const handleRemoveItem = (id) => {
-        setRemovingId(id);
+    const handleRemoveItem = (id, size) => {
+        setRemovingId(id, size);
         // Delay để animation hoàn thành
         setTimeout(() => {
-            removeFromOrder(id);
+            removeFromOrder(id, size);
             setRemovingId(null);
         }, 300);
     };
@@ -211,7 +211,7 @@ const CartPage = () => {
 
                                                 <motion.button
                                                     className="p-2 bg-red-500/80 hover:bg-red-600/80 text-white rounded-lg transition-colors"
-                                                    onClick={() => handleRemoveItem(item.id)}
+                                                    onClick={() => handleRemoveItem(item.id, item.size)}
                                                     whileHover={{ scale: 1.1 }}
                                                     whileTap={{ scale: 0.9 }}
                                                 >
