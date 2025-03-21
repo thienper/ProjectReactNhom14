@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Minus, Plus, RefreshCw, Shield, Truck } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
@@ -8,6 +9,12 @@ import "./ProductDetail.css";
 import RatingStars from './RatingStars';
 
 const ProductDetail = () => {
+    const [notification, setNotification] = useState({
+        show: false,
+        message: "",
+        type: "success",
+    });
+
     const { addToOrder } = useOrder();
     const { productId } = useParams();
     const productIdd = parseInt(productId);
@@ -32,7 +39,11 @@ const ProductDetail = () => {
 
     const handleAddToCart = () => {
         if (!selectedSize) {
-            alert('Vui lòng chọn size');
+            setNotification({
+                show: true,
+                message: `Vui lòng chọn size!`,
+                type: "error",
+            });
             return;
         }
 
@@ -46,8 +57,21 @@ const ProductDetail = () => {
         };
 
         addToOrder(orderItem);
-        alert(`Đã thêm ${quantity} sản phẩm ${product.name} (Size: ${selectedSize}) vào giỏ hàng`);
+        setNotification({
+            show: true,
+            message: `Đã thêm ${quantity} sản phẩm ${product.name} (Size: ${selectedSize}) vào giỏ hàng`,
+            type: "success",
+        });
+
     };
+    useEffect(() => {
+        if (notification.show) {
+            const timer = setTimeout(() => {
+                setNotification({ ...notification, show: false });
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [notification]);
 
     // Tìm sản phẩm liên quan
     const relatedProducts = products
@@ -67,7 +91,29 @@ const ProductDetail = () => {
 
     return (
         <div className="my-5 container-custom">
-
+            <motion.div
+                className={`fixed  right-5 z-50 px-6 py-3 rounded-lg shadow-lg ${notification.type === "success" ? "bg-green-600" : "bg-red-600"
+                    } text-white`}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{
+                    opacity: notification.show ? 1 : 0,
+                    x: notification.show ? 0 : 100
+                }}
+                transition={{ type: "spring", damping: 20 }}
+            >
+                <div className="flex items-center">
+                    {notification.type === "success" ? (
+                        <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    ) : (
+                        <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    )}
+                    <p>{notification.message}</p>
+                </div>
+            </motion.div>
 
             <Row className="gap-4 justify-content-evenly">
                 {/* Ảnh và gallery */}
@@ -155,13 +201,16 @@ const ProductDetail = () => {
                     </div>
 
                     {/* Thêm vào giỏ */}
+
                     <Button
                         variant="success"
                         size="lg"
                         className="w-100 mb-4"
-                        onClick={handleAddToCart}
                     >
-                        Thêm vào giỏ hàng
+                        <motion.button onClick={handleAddToCart}>
+                            Thêm vào giỏ hàng
+                        </motion.button>
+
                     </Button>
 
                     {/* Chính sách */}

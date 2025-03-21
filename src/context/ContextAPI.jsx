@@ -8,11 +8,24 @@ export const OrderProvider = ({ children }) => {
     const [orderList, setOrderList] = useState([]);
 
     const addToOrder = (dish) => {
-        setOrderList([...orderList, dish]);
+        const existingItemIndex = orderList.findIndex(item =>
+            item.id === dish.id && item.size === dish.size
+        );
+
+        if (existingItemIndex !== -1) {
+            const updatedOrderList = [...orderList];
+            updatedOrderList[existingItemIndex].quantity += dish.quantity;
+
+            setOrderList(updatedOrderList);
+        } else {
+            setOrderList([...orderList, dish]);
+        }
     };
-    const removeFromOrder = (id) => {
-        setOrderList(orderList.filter(item => item.id !== id));
+
+    const removeFromOrder = (id, size) => {
+        setOrderList(orderList.filter(item => !(item.id === id && item.size === size)));
     };
+
     const updateQuantity = (id, quantity) => {
         const updatedOrder = orderList.map(item =>
             item.id === id ? { ...item, quantity: parseInt(quantity) } : item

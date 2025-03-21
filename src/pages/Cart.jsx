@@ -13,8 +13,8 @@ const CartPage = () => {
         updateQuantity(id, updatedQuantity);
     };
 
-    const handleRemoveItem = (id) => {
-        removeFromOrder(id);
+    const handleRemoveItem = (id, size) => {
+        removeFromOrder(id, size);
     };
 
     const calculateSubtotal = () => {
@@ -75,7 +75,7 @@ const CartPage = () => {
                                         </td>
                                         <td>${(item.price * item.quantity).toFixed(2)}</td>
                                         <td>
-                                            <Button variant="danger" size="sm" onClick={() => handleRemoveItem(item.id)}>
+                                            <Button variant="danger" size="sm" onClick={() => handleRemoveItem(item.id, item.size)}>
                                                 🗑️
                                             </Button>
                                         </td>
