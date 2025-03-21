@@ -21,7 +21,6 @@ const Profile = ({ user, accounts, setAccounts, setUser, onLogout }) => {
     );
     setAccounts(updatedAccounts);
 
-    // Show success notification
     setNotification({
       show: true,
       message: "Địa chỉ đã được cập nhật thành công!",
@@ -79,14 +78,12 @@ const Profile = ({ user, accounts, setAccounts, setUser, onLogout }) => {
     setNewPassword("");
   };
 
-  // Notification system
   const [notification, setNotification] = useState({
     show: false,
     message: "",
-    type: "success", // 'success' or 'error'
+    type: "success", 
   });
 
-  // Auto-hide notification after 3 seconds
   useEffect(() => {
     if (notification.show) {
       const timer = setTimeout(() => {
@@ -96,7 +93,6 @@ const Profile = ({ user, accounts, setAccounts, setUser, onLogout }) => {
     }
   }, [notification]);
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -155,7 +151,6 @@ const Profile = ({ user, accounts, setAccounts, setUser, onLogout }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Notification */}
       <motion.div
         className={`fixed top-5 right-5 z-50 px-6 py-3 rounded-lg shadow-lg ${
           notification.type === "success" ? "bg-green-600" : "bg-red-600"
@@ -245,7 +240,6 @@ const Profile = ({ user, accounts, setAccounts, setUser, onLogout }) => {
             initial="hidden"
             animate="visible"
           >
-            {/* Personal Information */}
             <motion.div 
               className="col-span-1 bg-gradient-to-br from-blue-900/70 to-indigo-900/70 rounded-xl shadow-xl overflow-hidden border border-blue-500/30"
               variants={itemVariants}
@@ -374,7 +368,6 @@ const Profile = ({ user, accounts, setAccounts, setUser, onLogout }) => {
               </div>
             </motion.div>
 
-            {/* Change Password */}
             <motion.div 
               className="col-span-1 bg-gradient-to-br from-green-900/70 to-emerald-900/70 rounded-xl shadow-xl overflow-hidden border border-green-500/30"
               variants={itemVariants}
@@ -459,7 +452,6 @@ const Profile = ({ user, accounts, setAccounts, setUser, onLogout }) => {
               </div>
             </motion.div>
 
-            {/* Shipping Address */}
             <motion.div 
               className="col-span-1 bg-gradient-to-br from-cyan-900/70 to-blue-900/70 rounded-xl shadow-xl overflow-hidden border border-cyan-500/30"
               variants={itemVariants}
@@ -540,7 +532,6 @@ const Profile = ({ user, accounts, setAccounts, setUser, onLogout }) => {
             </motion.div>
           </motion.div>
 
-          {/* Recent Activities Section */}
           <motion.div 
             className="mt-8 bg-black/30 rounded-xl p-6 backdrop-blur-md border border-gray-700/30"
             variants={containerVariants}

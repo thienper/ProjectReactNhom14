@@ -14,7 +14,6 @@ const AccountPage = () => {
     return storedUser ? JSON.parse(storedUser) : null;
   });
 
-  // Add state to toggle between login and registration views
   const [showLogin, setShowLogin] = useState(true);
 
   useEffect(() => {
@@ -84,7 +83,6 @@ const AccountPage = () => {
     alert("Đăng ký và đăng nhập thành công!");
   };
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -150,7 +148,6 @@ const AccountPage = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Overlay for better contrast */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <div className="container mx-auto px-4 py-10 z-10">
@@ -165,7 +162,6 @@ const AccountPage = () => {
             delay: 0.2
           }}
         >
-          {/* Animated tabs */}
           <div className="flex mb-0 rounded-t-xl overflow-hidden relative">
             <button
               onClick={() => setShowLogin(true)}
@@ -190,7 +186,6 @@ const AccountPage = () => {
               ĐĂNG KÝ
             </button>
             
-            {/* Animated underline indicator */}
             <motion.div 
               className="absolute bottom-0 h-1 bg-white"
               initial={false}
@@ -202,7 +197,6 @@ const AccountPage = () => {
             />
           </div>
 
-          {/* Card with glass effect */}
           <div className="backdrop-blur-md bg-white/10 rounded-b-xl rounded-tr-xl shadow-2xl overflow-hidden border border-white/20">
             <AnimatePresence mode="wait">
               {showLogin ? (
@@ -308,7 +302,6 @@ const AccountPage = () => {
                   </form>
                 </motion.div>
               ) : (
-                // Registration Form
                 <motion.div
                   key="register"
                   className="p-8"
