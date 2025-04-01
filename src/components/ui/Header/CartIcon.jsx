@@ -7,20 +7,20 @@ const CartIcon = () => {
     const { orderList, removeFromOrder } = useOrder();
     const [cartOpen, setCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState(orderList);
-    
+
     useEffect(() => {
         setCartItems(orderList);
     }, [orderList]);
-    
+
     const navigate = useNavigate();
-    
+
     const handleNavigate = (path) => {
         setCartOpen(false);
         navigate(path);
     };
-    
-    const handleRemoveItem = (id) => {
-        removeFromOrder(id);
+
+    const handleRemoveItem = (id, size) => {
+        removeFromOrder(id, size);
     };
 
     const subtotal = cartItems.reduce((total, item) => total + item.price, 0);
@@ -61,7 +61,7 @@ const CartIcon = () => {
                                     </div>
                                     <button
                                         className="cart-item-remove"
-                                        onClick={() => handleRemoveItem(item.id)}
+                                        onClick={() => handleRemoveItem(item.id, item.size)}
                                     >
                                         <Trash2 size={16} />
                                     </button>

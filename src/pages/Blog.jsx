@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import blogs from "../Data/blogs.json";
 
 const Blog = () => {
+    const storedProducts = localStorage.getItem("blogs");
+    const blogs = storedProducts ? JSON.parse(storedProducts) : [];
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);

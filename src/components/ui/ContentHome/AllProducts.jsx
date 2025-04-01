@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Button } from "react-bootstrap";
 import ReactPaginate from 'react-paginate';
 import { Link } from "react-router-dom";
-import productsData from "../../../Data/products.json";
 
 // Hàm định dạng tiền tệ Việt Nam
 const formatCurrency = (price) => {
@@ -14,12 +13,17 @@ const formatCurrency = (price) => {
 };
 
 const AllProducts = () => {
+    const storedProducts = localStorage.getItem("productsData");
+    const productsData = storedProducts ? JSON.parse(storedProducts) : [];
+    console.log("Tat ca product: ", productsData)
+
     const [category, setCategory] = useState('Tất cả danh mục');
     const [brand, setBrand] = useState('Lọc theo hãng');
     const [sortBy, setSortBy] = useState('Lọc theo giá');
 
     const [itemOffset, setItemOffset] = useState(0);
     const itemsPerPage = 8;
+
 
     // --- FILTER + SORT ---
     const filteredProducts = productsData
@@ -40,13 +44,15 @@ const AllProducts = () => {
     const endOffset = itemOffset + itemsPerPage;
     const currentItems = filteredProducts.slice(itemOffset, endOffset);
     const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
-
+    console.log("Tat ca currentItems: ", currentItems)
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % filteredProducts.length;
         setItemOffset(newOffset);
     };
 
+
     return (
+
         <section id='1' className="py-16 bg-white pt-5">
             <div className="container-custom mx-auto px-4">
                 <h2 className="text-3xl font-bold mb-10">All Products</h2>
@@ -112,38 +118,41 @@ const AllProducts = () => {
 
                 {/* Products Grid */}
                 <div className="row g-4">
-                    {currentItems.map((product) => (
-                        <div key={product.id} className="col-md-3">
-                            <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
-                                <div className="card h-100 shadow-sm product-card position-relative">
-                                    {product.isNew && (
-                                        <span className="badge bg-warning text-dark position-absolute top-0 start-0 m-2">
-                                            NEW
-                                        </span>
-                                    )}
-                                    <img
-                                        src={product.images[0]}
-                                        alt={product.name}
-                                        className="card-img-top"
-                                    />
-                                    <div className="card-body d-flex flex-column justify-content-between">
-                                        <div>
-                                            <h5 className="card-title">{product.name}</h5>
-                                            <p className="text-muted">{product.category}</p>
-                                        </div>
-                                        <div className="d-flex justify-content-between align-items-center mt-3">
-                                            {/* Định dạng giá theo tiền VND */}
-                                            <h5 className="text-danger fw-bold">{formatCurrency(product.price)}</h5>
-                                            <Button as={Link} to={`/product/${product.id}`}
-                                                className="btn btn-dark btn-sm d-flex align-items-center"
-                                            >
-                                                Xem thêm
-                                            </Button>
+                    {currentItems.map(product => (
+                        <>
+                            <div key={product.id} className="col-md-3">
+                                <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
+                                    <div className="card h-100 shadow-sm product-card position-relative">
+                                        {product.isNew && (
+                                            <span className="badge bg-warning text-dark position-absolute top-0 start-0 m-2">
+                                                NEW
+                                            </span>
+                                        )}
+                                        <img
+                                            src={product.images[0]}
+                                            alt={product.name}
+                                            className="card-img-top"
+                                        />
+                                        <div className="card-body d-flex flex-column justify-content-between">
+                                            <div>
+                                                <h5 className="card-title">{product.name}</h5>
+                                                <p className="text-muted">{product.category}</p>
+                                            </div>
+                                            <div className="d-flex justify-content-between align-items-center mt-3">
+                                                {/* Định dạng giá theo tiền VND */}
+                                                <h5 className="text-danger fw-bold">{formatCurrency(product.price)}</h5>
+                                                <Button as={Link} to={`/product/${product.id}`}
+                                                    className="btn btn-dark btn-sm d-flex align-items-center"
+                                                >
+                                                    Xem thêm
+                                                </Button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Link>
-                        </div>
+                                </Link>
+                            </div>
+                        </>
+
                     ))}
                 </div>
 

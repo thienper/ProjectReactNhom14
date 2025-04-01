@@ -1,28 +1,27 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import {
-    FaStar,
+    FaChevronDown,
+    FaChevronRight,
+    FaChevronUp,
+    FaFilter,
+    FaRegThumbsUp,
     FaSearch,
     FaShoppingCart,
-    FaChevronRight,
-    FaRegThumbsUp,
-    FaFilter,
+    FaStar,
     FaTimes,
-    FaChevronDown,
-    FaChevronUp,
 } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
 import "./styles/WomensSports.css";
-import productsData from "../Data/products.json";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 const heroImageUrl =
     "https://nguonhangchina.com/wp-content/uploads/2024/02/Noi-dung-doan-van-ban-cua-ban-2024-02-28T161827.709-1170x440.jpg";
 
 const MensSandals = () => {
+
     const [products, setProducts] = useState([]);
-    const [reviews, setReviews] = useState([]);
+    const [reviews] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [priceRange, setPriceRange] = useState("all");
@@ -32,6 +31,10 @@ const MensSandals = () => {
     const [ratingFilter, setRatingFilter] = useState(0);
     const [brandFilters, setBrandFilters] = useState([]);
 
+    const { path } = useParams()
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [path]);
     const [showCategories, setShowCategories] = useState(true);
     const [showShoeTypes, setShowShoeTypes] = useState(true);
     const [showPriceRanges, setShowPriceRanges] = useState(true);
@@ -39,95 +42,76 @@ const MensSandals = () => {
     const [showBrands, setShowBrands] = useState(true);
 
     useEffect(() => {
+        let isMounted = true;
+
         const fetchData = async () => {
             try {
                 setLoading(true);
 
-                const womenSandals = productsData.filter(product =>
-                    product.gender === "Nam" && (
-                        (product.category && product.category.toLowerCase().includes("sandal")) ||
-                        (product.type && product.type.toLowerCase().includes("sandal")) ||
-                        (product.tags && Array.isArray(product.tags) &&
-                            product.tags.some(tag => typeof tag === "string" && tag.toLowerCase().includes("sandal")))
-                    )
+                const response = await fetch("https://apishoes-ihcb.onrender.com/products");
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                const data = await response.json();
+
+                if (!isMounted) return;
+
+
+                const menLeatherShoes = data.filter(
+                    product => product.gender === "Nam" &&
+                        (product.category?.toLowerCase().includes("sandal") ||
+                            product.type?.toLowerCase().includes("sandal"))
                 );
 
-                const productsToUse = womenSandals.length > 0 ? womenSandals :
-                    productsData.filter(product => product.gender === "Nam").slice(0, 30);
-
-                try {
-                    const reviewResponse = await axios.get(
-                        "https://67dbd6fd1fd9e43fe476247e.mockapi.io/reviews"
-                    );
-                    const reviewData = reviewResponse.data;
-
-                    let reviewsToUse = Array.isArray(reviewData)
-                        ? reviewData
-                        : reviewData.reviews || reviewData.items || [];
-
-                    setReviews(reviewsToUse.slice(0, 3));
-                } catch (reviewError) {
-                    console.error("Error loading reviews:", reviewError);
-                    setReviews([
-                        {
-                            name: "Nguyễn Thị Hương",
-                            location: "Hà Nội",
-                            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                            rating: 5,
-                            text: "Tôi đã mua đôi dép xăng đan từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với thời tiết mùa hè.",
-                        },
-                    ]);
-                }
-
-                const enhancedData = productsToUse.map(product => ({
+                // Format dữ liệu
+                const formattedProducts = menLeatherShoes.map(product => ({
                     ...product,
+                    id: product.id || Math.random().toString(36).substr(2, 9),
                     price: typeof product.price === "number"
                         ? `${product.price.toLocaleString("vi-VN")}đ`
                         : product.price,
-                    image: product.images && product.images.length > 0
-                        ? product.images[0]
-                        : product.image || "https://via.placeholder.com/400x500?text=No+Image",
+                    image: product.images?.[0] || product.image || "https://via.placeholder.com/400x500?text=No+Image",
                     isNew: product.isNewArrival || product.isNew || false,
                     bestSeller: product.isFeatured || product.bestSeller || false,
-                    color: product.colors && product.colors.length > 0
-                        ? product.colors[0]
-                        : product.color || "Đen",
-                    category: product.subCategory || ["casual", "formal", "beach"][Math.floor(Math.random() * 3)],
-                    discount: product.discount || (Math.random() > 0.8 ? Math.floor(Math.random() * 20 + 10) : 0),
-                    rating: product.rating || (Math.random() * 2 + 3).toFixed(1),
-                    name: product.name.includes("Sandal")
-                        ? product.name
-                        : product.name.replace("Running", "Sandal").replace("Shoe", "Sandal"),
+                    color: product.colors?.[0] || product.color || "Đen",
+                    discount: product.discount || 0,
+                    rating: product.rating ? parseFloat(product.rating).toFixed(1) : (Math.random() * 2 + 3).toFixed(1)
                 }));
 
-                setProducts(enhancedData);
-                setFilteredProducts(enhancedData);
-                setLoading(false);
+                // Fallback data nếu không có sản phẩm
+                const productsToUse = formattedProducts.length > 0
+                    ? formattedProducts
+                    : [
+                        {
+                            id: "fallback-1",
+                            name: "Giày Tây Nam Da Thật",
+                            price: "1.890.000đ",
+                            image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
+                            rating: "4.5",
+                            isNew: true,
+                            discount: 15,
+                            bestSeller: true,
+                            color: "Đen"
+                        }
+                    ];
+
+                if (isMounted) {
+                    setProducts(productsToUse);
+                    setFilteredProducts(productsToUse);
+                    setLoading(false);
+                }
             } catch (error) {
                 console.error("Error loading data:", error);
+                if (isMounted) {
+                    setLoading(false);
 
-                const fallbackProducts = [
-                    {
-                        id: 1,
-                        name: "Havaianas Slim Sandal",
-                        price: "590.000đ",
-                        image: "https://images.unsplash.com/photo-1603487742131-4160ec999306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
-                        rating: "4.5",
-                        category: "beach",
-                        isNew: true,
-                        discount: 0,
-                        bestSeller: true,
-                        color: "Đen",
-                    },
-                ];
-
-                setProducts(fallbackProducts);
-                setFilteredProducts(fallbackProducts);
-                setLoading(false);
+                }
             }
         };
 
         fetchData();
+
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     const toggleBrandFilter = (brandName) => {
@@ -281,11 +265,11 @@ const MensSandals = () => {
         },
         {
             name: "Teva",
-            logo: "https://images.unsplash.com/photo-1531911617563-5faaf4a478df?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+            logo: "https://mma.prnewswire.com/media/2347369/BrandMark_Black_Logo.jpg",
         },
         {
             name: "Ipanema",
-            logo: "https://images.unsplash.com/photo-1612015709104-c7f8cafbdeed?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+            logo: "https://assets.brazilianfootwear.com/brands/thumbs/md/7ffdaddc86096aebff7692c78bc6171c.jpg",
         },
     ];
 
@@ -982,32 +966,7 @@ const MensSandals = () => {
                             </div>
                         )}
 
-                        {/* Pagination Controls */}
-                        {filteredProducts.length > 0 && (
-                            <div className="mt-8 flex justify-center">
-                                <div className="flex items-center space-x-1">
-                                    <button className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        Trước
-                                    </button>
-                                    <button className="px-4 py-2 rounded-lg bg-blue-600 text-white">
-                                        1
-                                    </button>
-                                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        2
-                                    </button>
-                                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        3
-                                    </button>
-                                    <span className="px-3 py-2">...</span>
-                                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        10
-                                    </button>
-                                    <button className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        Sau
-                                    </button>
-                                </div>
-                            </div>
-                        )}
+
                     </div>
                 </div>
             </div>

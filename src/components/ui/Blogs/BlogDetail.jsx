@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
-import blogs from "../../../Data/blogs.json";
+
 
 const BlogDetail = () => {
     const { blogId } = useParams();
+    const storedProducts = localStorage.getItem("blogs");
+    const blogs = storedProducts ? JSON.parse(storedProducts) : [];
     const blog = blogs.find(item => item.id === parseInt(blogId));
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -1,9 +1,62 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ContextAPI = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const OrderProvider = ({ children }) => {
+
+    // danh sách các sản phẩm
+
+    useEffect(() => {
+        fetch("https://apishoes-gtje.onrender.com/products")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log("Dữ liệu API products:", data);
+                localStorage.setItem("productsData", JSON.stringify(data));
+            })
+            .catch((error) => {
+                console.error("Fetch error:", error);
+            });
+    }, []);
+    // Danh sach tai khoan
+    useEffect(() => {
+        fetch("https://apishoes-gtje.onrender.com/accounts")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log("Dữ liệu API account:", data);
+                localStorage.setItem("accounts", JSON.stringify(data));
+            })
+            .catch((error) => {
+                console.error("Fetch error:", error);
+            });
+    }, []);
+    // Danh sach blogs
+    useEffect(() => {
+        fetch("https://apishoes-gtje.onrender.com/blogs")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log("Dữ liệu API blog:", data);
+                localStorage.setItem("blogs", JSON.stringify(data));
+            })
+            .catch((error) => {
+                console.error("Fetch error:", error);
+            });
+    }, []);
     // Quản lý sản phẩm
     const [orderList, setOrderList] = useState([]);
 

@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Button } from "react-bootstrap";
 import {
   FaChevronDown,
@@ -14,9 +13,8 @@ import {
   FaStar,
   FaTimes,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import productsData from "../Data/products.json";
 import "./styles/WomensHeels.css";
 
 const heroImageUrl =
@@ -24,7 +22,7 @@ const heroImageUrl =
 
 const WomensHeels = () => {
   const [products, setProducts] = useState([]);
-  const [reviews, setReviews] = useState([]);
+  const [reviews] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [priceRange, setPriceRange] = useState("all");
@@ -34,6 +32,10 @@ const WomensHeels = () => {
   const [ratingFilter, setRatingFilter] = useState(0);
   const [brandFilters, setBrandFilters] = useState([]);
 
+  const { path } = useParams()
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [path]);
   const [showCategories, setShowCategories] = useState(true);
   const [showShoeTypes, setShowShoeTypes] = useState(true);
   const [showPriceRanges, setShowPriceRanges] = useState(true);
@@ -41,130 +43,78 @@ const WomensHeels = () => {
   const [showBrands, setShowBrands] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchData = async () => {
       try {
         setLoading(true);
 
-        const womenHeels = productsData.filter(
-          (product) =>
-            product.gender === "Nữ" &&
-            ((product.category &&
-              product.category.toLowerCase().includes("gót")) ||
-              (product.type && product.type.toLowerCase().includes("cao")) ||
-              (product.tags &&
-                Array.isArray(product.tags) &&
-                product.tags.some(
-                  (tag) =>
-                    typeof tag === "string" &&
-                    tag.toLowerCase().includes("heel")
-                )))
+        const response = await fetch("https://apishoes-ihcb.onrender.com/products");
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        const data = await response.json();
+
+        if (!isMounted) return;
+
+
+        const menLeatherShoes = data.filter(
+          product => product.gender === "Nữ" &&
+            (product.category?.toLowerCase().includes("cao gót") ||
+              product.type?.toLowerCase().includes("cao gót"))
         );
 
-        const productsToUse =
-          womenHeels.length > 0
-            ? womenHeels
-            : productsData
-                .filter((product) => product.gender === "Nữ")
-                .slice(0, 30);
-
-        try {
-          const reviewResponse = await axios.get(
-            "https://67dbd6fd1fd9e43fe476247e.mockapi.io/reviews"
-          );
-          const reviewData = reviewResponse.data;
-
-          let reviewsToUse = Array.isArray(reviewData)
-            ? reviewData
-            : reviewData.reviews || reviewData.items || [];
-
-          setReviews(reviewsToUse.slice(0, 6));
-        } catch (reviewError) {
-          console.error("Error loading reviews:", reviewError);
-          setReviews([
-            {
-              name: "Nguyễn Thị Hương",
-              location: "Hà Nội",
-              image:
-                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-              rating: 5,
-              text: "Tôi đã mua đôi dép xăng đan từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với thời tiết mùa hè.",
-            },
-          ]);
-        }
-
-        const enhancedData = productsToUse.map((product) => ({
+        // Format dữ liệu
+        const formattedProducts = menLeatherShoes.map(product => ({
           ...product,
-          price:
-            typeof product.price === "number"
-              ? `${product.price.toLocaleString("vi-VN")}đ`
-              : product.price,
-          image:
-            product.images && product.images.length > 0
-              ? product.images[0]
-              : product.image ||
-                "https://via.placeholder.com/400x500?text=No+Image",
+          id: product.id || Math.random().toString(36).substr(2, 9),
+          price: typeof product.price === "number"
+            ? `${product.price.toLocaleString("vi-VN")}đ`
+            : product.price,
+          image: product.images?.[0] || product.image || "https://via.placeholder.com/400x500?text=No+Image",
           isNew: product.isNewArrival || product.isNew || false,
           bestSeller: product.isFeatured || product.bestSeller || false,
-          color:
-            product.colors && product.colors.length > 0
-              ? product.colors[0]
-              : product.color || "Đen",
-          category:
-            product.type ||
-            ["stiletto", "block", "kitten"][Math.floor(Math.random() * 3)],
-          discount:
-            product.discount ||
-            (Math.random() > 0.8 ? Math.floor(Math.random() * 20 + 10) : 0),
-          rating: product.rating || (Math.random() * 2 + 3).toFixed(1),
-          name: product.name.includes("Heel")
-            ? product.name
-            : product.name
-                .replace("Running", "Stiletto")
-                .replace("Shoe", "Heel"),
+          color: product.colors?.[0] || product.color || "Đen",
+          discount: product.discount || 0,
+          rating: product.rating ? parseFloat(product.rating).toFixed(1) : (Math.random() * 2 + 3).toFixed(1)
         }));
 
-        setProducts(enhancedData);
-        setFilteredProducts(enhancedData);
-        setLoading(false);
+        // Fallback data nếu không có sản phẩm
+        const productsToUse = formattedProducts.length > 0
+          ? formattedProducts
+          : [
+            {
+              id: "fallback-1",
+              name: "Giày Tây Nam Da Thật",
+              price: "1.890.000đ",
+              image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
+              rating: "4.5",
+              isNew: true,
+              discount: 15,
+              bestSeller: true,
+              color: "Đen"
+            }
+          ];
+
+        if (isMounted) {
+          setProducts(productsToUse);
+          setFilteredProducts(productsToUse);
+          setLoading(false);
+        }
       } catch (error) {
         console.error("Error loading data:", error);
+        if (isMounted) {
+          setLoading(false);
 
-        const fallbackProducts = [
-          {
-            id: 1,
-            name: "Steve Madden Vala",
-            price: "1.890.000đ",
-            image:
-              "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
-            rating: "4.5",
-            category: "stiletto",
-            isNew: true,
-            discount: 0,
-            bestSeller: true,
-            color: "Đen",
-          },
-        ];
-
-        const fallbackReviews = [
-          {
-            name: "Nguyễn Thị Hương",
-            location: "Hà Nội",
-            image:
-              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-            rating: 5,
-            text: "Tôi đã mua đôi giày cao gót từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với nhiều trang phục khác nhau.",
-          },
-        ];
-
-        setProducts(fallbackProducts);
-        setFilteredProducts(fallbackProducts);
-        setReviews(fallbackReviews);
-        setLoading(false);
+        }
       }
     };
 
     fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
 
   const toggleBrandFilter = (brandName) => {
     if (brandFilters.includes(brandName)) {
@@ -191,8 +141,8 @@ const WomensHeels = () => {
         activeTab === "bestseller"
           ? "Bán chạy"
           : activeTab === "new"
-          ? "Mới"
-          : "Giảm giá",
+            ? "Mới"
+            : "Giảm giá",
       clear: () => setActiveTab("all"),
     });
   }
@@ -202,8 +152,8 @@ const WomensHeels = () => {
         activeCategory === "stiletto"
           ? "Stiletto"
           : activeCategory === "block"
-          ? "Gót vuông"
-          : "Gót thấp",
+            ? "Gót vuông"
+            : "Gót thấp",
       clear: () => setActiveCategory("all"),
     });
   }
@@ -213,8 +163,8 @@ const WomensHeels = () => {
         priceRange === "under1m"
           ? "< 1 triệu"
           : priceRange === "1m-2m"
-          ? "1-2 triệu"
-          : "> 2 triệu",
+            ? "1-2 triệu"
+            : "> 2 triệu",
       clear: () => setPriceRange("all"),
     });
   }
@@ -439,8 +389,8 @@ const WomensHeels = () => {
           {product.category === "stiletto"
             ? "Stiletto"
             : product.category === "block"
-            ? "Gót vuông"
-            : "Gót thấp"}
+              ? "Gót vuông"
+              : "Gót thấp"}
         </div>
         <h3 className="font-bold text-lg mb-1 line-clamp-1 hover:text-blue-600 transition-colors">
           {product.name}
@@ -456,12 +406,12 @@ const WomensHeels = () => {
                 product.color === "Đen"
                   ? "black"
                   : product.color === "Trắng"
-                  ? "white"
-                  : product.color === "Nâu"
-                  ? "brown"
-                  : product.color === "Đỏ"
-                  ? "red"
-                  : "beige",
+                    ? "white"
+                    : product.color === "Nâu"
+                      ? "brown"
+                      : product.color === "Đỏ"
+                        ? "red"
+                        : "beige",
               border:
                 product.color === "Trắng" || product.color === "Be"
                   ? "1px solid #ddd"
@@ -601,11 +551,10 @@ const WomensHeels = () => {
                 {showCategories && (
                   <div className="mt-3 grid grid-cols-2 gap-2">
                     <button
-                      className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${
-                        activeTab === "all"
-                          ? "bg-blue-50 text-blue-700 font-medium"
-                          : "bg-gray-50 hover:bg-gray-100 text-gray-700"
-                      }`}
+                      className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeTab === "all"
+                        ? "bg-blue-50 text-blue-700 font-medium"
+                        : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+                        }`}
                       onClick={() => setActiveTab("all")}
                     >
                       <span className="text-2xl mb-1">🏆</span>
@@ -616,11 +565,10 @@ const WomensHeels = () => {
                     </button>
 
                     <button
-                      className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${
-                        activeTab === "bestseller"
-                          ? "bg-blue-50 text-blue-700 font-medium"
-                          : "bg-gray-50 hover:bg-gray-100 text-gray-700"
-                      }`}
+                      className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeTab === "bestseller"
+                        ? "bg-blue-50 text-blue-700 font-medium"
+                        : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+                        }`}
                       onClick={() => setActiveTab("bestseller")}
                     >
                       <span className="text-2xl mb-1">🔥</span>
@@ -631,11 +579,10 @@ const WomensHeels = () => {
                     </button>
 
                     <button
-                      className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${
-                        activeTab === "new"
-                          ? "bg-blue-50 text-blue-700 font-medium"
-                          : "bg-gray-50 hover:bg-gray-100 text-gray-700"
-                      }`}
+                      className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeTab === "new"
+                        ? "bg-blue-50 text-blue-700 font-medium"
+                        : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+                        }`}
                       onClick={() => setActiveTab("new")}
                     >
                       <span className="text-2xl mb-1">✨</span>
@@ -646,11 +593,10 @@ const WomensHeels = () => {
                     </button>
 
                     <button
-                      className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${
-                        activeTab === "sale"
-                          ? "bg-blue-50 text-blue-700 font-medium"
-                          : "bg-gray-50 hover:bg-gray-100 text-gray-700"
-                      }`}
+                      className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeTab === "sale"
+                        ? "bg-blue-50 text-blue-700 font-medium"
+                        : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+                        }`}
                       onClick={() => setActiveTab("sale")}
                     >
                       <span className="text-2xl mb-1">🏷️</span>
@@ -675,11 +621,10 @@ const WomensHeels = () => {
                   <div className="mt-3 space-y-2">
                     <div className="grid grid-cols-2 gap-2">
                       <button
-                        className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${
-                          activeCategory === "all"
-                            ? "bg-blue-50 text-blue-700 font-medium"
-                            : "bg-gray-50 hover:bg-gray-100 text-gray-700"
-                        }`}
+                        className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeCategory === "all"
+                          ? "bg-blue-50 text-blue-700 font-medium"
+                          : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+                          }`}
                         onClick={() => setActiveCategory("all")}
                       >
                         <span className="text-xl mb-1">👠</span>
@@ -687,11 +632,10 @@ const WomensHeels = () => {
                       </button>
 
                       <button
-                        className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${
-                          activeCategory === "stiletto"
-                            ? "bg-blue-50 text-blue-700 font-medium"
-                            : "bg-gray-50 hover:bg-gray-100 text-gray-700"
-                        }`}
+                        className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeCategory === "stiletto"
+                          ? "bg-blue-50 text-blue-700 font-medium"
+                          : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+                          }`}
                         onClick={() => setActiveCategory("stiletto")}
                       >
                         <span className="text-xl mb-1">👠</span>
@@ -699,11 +643,10 @@ const WomensHeels = () => {
                       </button>
 
                       <button
-                        className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${
-                          activeCategory === "block"
-                            ? "bg-blue-50 text-blue-700 font-medium"
-                            : "bg-gray-50 hover:bg-gray-100 text-gray-700"
-                        }`}
+                        className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeCategory === "block"
+                          ? "bg-blue-50 text-blue-700 font-medium"
+                          : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+                          }`}
                         onClick={() => setActiveCategory("block")}
                       >
                         <span className="text-xl mb-1">👡</span>
@@ -711,11 +654,10 @@ const WomensHeels = () => {
                       </button>
 
                       <button
-                        className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${
-                          activeCategory === "kitten"
-                            ? "bg-blue-50 text-blue-700 font-medium"
-                            : "bg-gray-50 hover:bg-gray-100 text-gray-700"
-                        }`}
+                        className={`filter-button flex flex-col items-center justify-center p-3 rounded-lg transition ${activeCategory === "kitten"
+                          ? "bg-blue-50 text-blue-700 font-medium"
+                          : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+                          }`}
                         onClick={() => setActiveCategory("kitten")}
                       >
                         <span className="text-xl mb-1">👢</span>
@@ -738,44 +680,40 @@ const WomensHeels = () => {
                   <div className="mt-3">
                     <div className="flex flex-wrap gap-2">
                       <button
-                        className={`filter-button py-2 px-4 rounded-lg transition flex-grow text-center ${
-                          priceRange === "all"
-                            ? "bg-blue-50 text-blue-700 font-medium border-2 border-blue-200"
-                            : "bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200"
-                        }`}
+                        className={`filter-button py-2 px-4 rounded-lg transition flex-grow text-center ${priceRange === "all"
+                          ? "bg-blue-50 text-blue-700 font-medium border-2 border-blue-200"
+                          : "bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200"
+                          }`}
                         onClick={() => setPriceRange("all")}
                       >
                         Tất cả
                       </button>
 
                       <button
-                        className={`filter-button py-2 px-4 rounded-lg transition flex-grow text-center ${
-                          priceRange === "under1m"
-                            ? "bg-blue-50 text-blue-700 font-medium border-2 border-blue-200"
-                            : "bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200"
-                        }`}
+                        className={`filter-button py-2 px-4 rounded-lg transition flex-grow text-center ${priceRange === "under1m"
+                          ? "bg-blue-50 text-blue-700 font-medium border-2 border-blue-200"
+                          : "bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200"
+                          }`}
                         onClick={() => setPriceRange("under1m")}
                       >
                         &lt; 1 triệu
                       </button>
 
                       <button
-                        className={`filter-button py-2 px-4 rounded-lg transition flex-grow text-center ${
-                          priceRange === "1m-2m"
-                            ? "bg-blue-50 text-blue-700 font-medium border-2 border-blue-200"
-                            : "bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200"
-                        }`}
+                        className={`filter-button py-2 px-4 rounded-lg transition flex-grow text-center ${priceRange === "1m-2m"
+                          ? "bg-blue-50 text-blue-700 font-medium border-2 border-blue-200"
+                          : "bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200"
+                          }`}
                         onClick={() => setPriceRange("1m-2m")}
                       >
                         1 - 2 triệu
                       </button>
 
                       <button
-                        className={`filter-button py-2 px-4 rounded-lg transition flex-grow text-center ${
-                          priceRange === "over2m"
-                            ? "bg-blue-50 text-blue-700 font-medium border-2 border-blue-200"
-                            : "bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200"
-                        }`}
+                        className={`filter-button py-2 px-4 rounded-lg transition flex-grow text-center ${priceRange === "over2m"
+                          ? "bg-blue-50 text-blue-700 font-medium border-2 border-blue-200"
+                          : "bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200"
+                          }`}
                         onClick={() => setPriceRange("over2m")}
                       >
                         &gt; 2 triệu
@@ -786,15 +724,14 @@ const WomensHeels = () => {
                     <div className="mt-4 px-2">
                       <div className="h-2 bg-gray-200 rounded-full relative">
                         <div
-                          className={`absolute h-full bg-blue-500 rounded-full ${
-                            priceRange === "under1m"
-                              ? "w-1/3"
-                              : priceRange === "1m-2m"
+                          className={`absolute h-full bg-blue-500 rounded-full ${priceRange === "under1m"
+                            ? "w-1/3"
+                            : priceRange === "1m-2m"
                               ? "left-1/3 w-1/3"
                               : priceRange === "over2m"
-                              ? "left-2/3 w-1/3"
-                              : "w-full opacity-30"
-                          }`}
+                                ? "left-2/3 w-1/3"
+                                : "w-full opacity-30"
+                            }`}
                         ></div>
                       </div>
                       <div className="flex justify-between mt-1 text-xs text-gray-500">
@@ -821,11 +758,10 @@ const WomensHeels = () => {
                     {[5, 4, 3, 2, 1].map((star) => (
                       <button
                         key={star}
-                        className={`flex items-center w-full text-left rounded-lg p-3 transition ${
-                          ratingFilter === star
-                            ? "bg-blue-50 text-blue-700 border-2 border-blue-200"
-                            : "hover:bg-gray-50 text-gray-700 border border-gray-200"
-                        }`}
+                        className={`flex items-center w-full text-left rounded-lg p-3 transition ${ratingFilter === star
+                          ? "bg-blue-50 text-blue-700 border-2 border-blue-200"
+                          : "hover:bg-gray-50 text-gray-700 border border-gray-200"
+                          }`}
                         onClick={() =>
                           setRatingFilter(ratingFilter === star ? 0 : star)
                         }
@@ -870,11 +806,10 @@ const WomensHeels = () => {
                       {brands.map((brand, index) => (
                         <button
                           key={index}
-                          className={`flex flex-col items-center justify-center p-3 rounded-lg transition ${
-                            brandFilters.includes(brand.name)
-                              ? "bg-blue-50 border-2 border-blue-200"
-                              : "bg-gray-50 hover:bg-gray-100 border border-gray-200"
-                          }`}
+                          className={`flex flex-col items-center justify-center p-3 rounded-lg transition ${brandFilters.includes(brand.name)
+                            ? "bg-blue-50 border-2 border-blue-200"
+                            : "bg-gray-50 hover:bg-gray-100 border border-gray-200"
+                            }`}
                           onClick={() => toggleBrandFilter(brand.name)}
                         >
                           <div className="w-10 h-10 rounded-full overflow-hidden mb-2 bg-white p-1">
@@ -885,11 +820,10 @@ const WomensHeels = () => {
                             />
                           </div>
                           <span
-                            className={`text-sm ${
-                              brandFilters.includes(brand.name)
-                                ? "font-medium text-blue-700"
-                                : "text-gray-700"
-                            }`}
+                            className={`text-sm ${brandFilters.includes(brand.name)
+                              ? "font-medium text-blue-700"
+                              : "text-gray-700"
+                              }`}
                           >
                             {brand.name}
                           </span>
@@ -953,51 +887,46 @@ const WomensHeels = () => {
             {/* Quick filter tags */}
             <div className="flex flex-wrap gap-2 mb-4">
               <button
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                  activeTab === "all"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeTab === "all"
+                  ? "bg-blue-600 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
                 onClick={() => setActiveTab("all")}
               >
                 Tất cả
               </button>
               <button
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                  activeTab === "bestseller"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeTab === "bestseller"
+                  ? "bg-blue-600 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
                 onClick={() => setActiveTab("bestseller")}
               >
                 Bán chạy
               </button>
               <button
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                  activeTab === "new"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeTab === "new"
+                  ? "bg-blue-600 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
                 onClick={() => setActiveTab("new")}
               >
                 Mới
               </button>
               <button
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                  activeTab === "sale"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeTab === "sale"
+                  ? "bg-blue-600 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
                 onClick={() => setActiveTab("sale")}
               >
                 Giảm giá
               </button>
               <button
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                  activeCategory === "stiletto"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeCategory === "stiletto"
+                  ? "bg-blue-600 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
                 onClick={() =>
                   setActiveCategory(
                     activeCategory === "stiletto" ? "all" : "stiletto"
@@ -1007,11 +936,10 @@ const WomensHeels = () => {
                 Stiletto
               </button>
               <button
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                  activeCategory === "block"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeCategory === "block"
+                  ? "bg-blue-600 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
                 onClick={() =>
                   setActiveCategory(
                     activeCategory === "block" ? "all" : "block"
@@ -1021,11 +949,10 @@ const WomensHeels = () => {
                 Gót vuông
               </button>
               <button
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                  activeCategory === "kitten"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition ${activeCategory === "kitten"
+                  ? "bg-blue-600 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
                 onClick={() =>
                   setActiveCategory(
                     activeCategory === "kitten" ? "all" : "kitten"
@@ -1086,32 +1013,7 @@ const WomensHeels = () => {
               </div>
             )}
 
-            {/* Pagination Controls */}
-            {filteredProducts.length > 0 && (
-              <div className="mt-8 flex justify-center">
-                <div className="flex items-center space-x-1">
-                  <button className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                    Prev
-                  </button>
-                  <button className="px-4 py-2 rounded-lg bg-blue-600 text-white">
-                    1
-                  </button>
-                  <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                    2
-                  </button>
-                  <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                    3
-                  </button>
-                  <span className="px-3 py-2">...</span>
-                  <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                    10
-                  </button>
-                  <button className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                    Next
-                  </button>
-                </div>
-              </div>
-            )}
+
 
             {/* Mobile filter overlay */}
             <div className="fixed inset-0 filter-overlay z-50 transform translate-x-full transition-transform duration-300">
@@ -1142,9 +1044,8 @@ const WomensHeels = () => {
                   <h4 className="font-bold mb-3">Danh mục</h4>
                   <div className="flex flex-col space-y-2">
                     <button
-                      className={`filter-button flex items-center justify-start px-4 py-2 rounded-lg transition-all ${
-                        activeTab === "all" ? "active" : "hover:bg-gray-100"
-                      }`}
+                      className={`filter-button flex items-center justify-start px-4 py-2 rounded-lg transition-all ${activeTab === "all" ? "active" : "hover:bg-gray-100"
+                        }`}
                       onClick={() => {
                         setActiveTab("all");
                         document
@@ -1155,11 +1056,10 @@ const WomensHeels = () => {
                       <span className="mr-2 text-xl">🏆</span> Tất cả sản phẩm
                     </button>
                     <button
-                      className={`filter-button flex items-center justify-start px-4 py-2 rounded-lg transition-all ${
-                        activeTab === "bestseller"
-                          ? "active"
-                          : "hover:bg-gray-100"
-                      }`}
+                      className={`filter-button flex items-center justify-start px-4 py-2 rounded-lg transition-all ${activeTab === "bestseller"
+                        ? "active"
+                        : "hover:bg-gray-100"
+                        }`}
                       onClick={() => {
                         setActiveTab("bestseller");
                         document
@@ -1170,9 +1070,8 @@ const WomensHeels = () => {
                       <span className="mr-2 text-xl">🔥</span> Bán chạy nhất
                     </button>
                     <button
-                      className={`filter-button flex items-center justify-start px-4 py-2 rounded-lg transition-all ${
-                        activeTab === "new" ? "active" : "hover:bg-gray-100"
-                      }`}
+                      className={`filter-button flex items-center justify-start px-4 py-2 rounded-lg transition-all ${activeTab === "new" ? "active" : "hover:bg-gray-100"
+                        }`}
                       onClick={() => {
                         setActiveTab("new");
                         document
@@ -1183,9 +1082,8 @@ const WomensHeels = () => {
                       <span className="mr-2 text-xl">✨</span> Sản phẩm mới
                     </button>
                     <button
-                      className={`filter-button flex items-center justify-start px-4 py-2 rounded-lg transition-all ${
-                        activeTab === "sale" ? "active" : "hover:bg-gray-100"
-                      }`}
+                      className={`filter-button flex items-center justify-start px-4 py-2 rounded-lg transition-all ${activeTab === "sale" ? "active" : "hover:bg-gray-100"
+                        }`}
                       onClick={() => {
                         setActiveTab("sale");
                         document

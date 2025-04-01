@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import { useOrder } from '../../../context/ContextAPI';
-import products from "../../../Data/products.json";
 import "./ProductDetail.css";
 import RatingStars from './RatingStars';
 
@@ -18,6 +17,12 @@ const formatCurrency = (price) => {
 };
 
 const ProductDetail = () => {
+    const storedProducts = localStorage.getItem("productsData");
+    const productsData = storedProducts ? JSON.parse(storedProducts) : [];
+
+    // const { productsData } = useOrder();
+    console.log("danh sach san pham trong pham chi tiet la: ", productsData)
+    const products = productsData;
     const [notification, setNotification] = useState({
         show: false,
         message: "",
@@ -29,6 +34,7 @@ const ProductDetail = () => {
     const productIdd = parseInt(productId);
     const product = products.find((item) => item.id === productIdd);
 
+    console.log("san pham trong chi tiet la: ", product)
     const [quantity, setQuantity] = useState(1);
     const [selectedSize, setSelectedSize] = useState('');
     const [selectedImage, setSelectedImage] = useState(product.images[0]);
@@ -214,10 +220,10 @@ const ProductDetail = () => {
                         variant="success"
                         size="lg"
                         className="w-100 mb-4"
+                        onClick={handleAddToCart}
                     >
-                        <motion.button onClick={handleAddToCart}>
-                            Thêm vào giỏ hàng
-                        </motion.button>
+
+                        Thêm vào giỏ hàng
 
                     </Button>
 

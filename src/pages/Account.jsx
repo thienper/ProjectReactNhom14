@@ -1,9 +1,20 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import listAccount from "../Data/account.json";
-import { motion, AnimatePresence } from "framer-motion";
 import Profile from "./Profile";
 
 const AccountPage = () => {
+  const storedProducts = localStorage.getItem("accounts");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const listAccount = storedProducts ? JSON.parse(storedProducts) : [];
+
+  // Cập nhật `accounts` khi `listAccount` có dữ liệu từ API
+  useEffect(() => {
+    if (listAccount.length > 0) {
+      setAccounts(listAccount);
+    }
+  }, [listAccount]);
+  console.log(listAccount)
+
   const [accounts, setAccounts] = useState(() => {
     const storedAccounts = localStorage.getItem("accounts");
     return storedAccounts ? JSON.parse(storedAccounts) : listAccount;
@@ -16,9 +27,11 @@ const AccountPage = () => {
 
   const [showLogin, setShowLogin] = useState(true);
 
+
   useEffect(() => {
     localStorage.setItem("accounts", JSON.stringify(accounts));
   }, [accounts]);
+
 
   // ------------------- Đăng nhập -------------------
   const [loginInfo, setLoginInfo] = useState({
@@ -85,15 +98,15 @@ const AccountPage = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.5,
         when: "beforeChildren",
         staggerChildren: 0.1
       }
     },
-    exit: { 
+    exit: {
       opacity: 0,
       transition: { duration: 0.3 }
     }
@@ -101,24 +114,24 @@ const AccountPage = () => {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
       transition: { type: "spring", stiffness: 300, damping: 24 }
     }
   };
 
   const buttonVariants = {
-    hover: { 
+    hover: {
       scale: 1.05,
       boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.2)",
-      transition: { 
-        type: "spring", 
-        stiffness: 400, 
+      transition: {
+        type: "spring",
+        stiffness: 400,
         damping: 10
       }
     },
-    tap: { 
+    tap: {
       scale: 0.95
     }
   };
@@ -127,11 +140,11 @@ const AccountPage = () => {
   // Nếu đã đăng nhập, hiển thị trang Profile
   if (user) {
     return (
-      <Profile 
-        user={user} 
-        accounts={accounts} 
-        setAccounts={setAccounts} 
-        setUser={setUser} 
+      <Profile
+        user={user}
+        accounts={accounts}
+        setAccounts={setAccounts}
+        setUser={setUser}
         onLogout={handleLogout}
       />
     );
@@ -151,13 +164,13 @@ const AccountPage = () => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <div className="container mx-auto px-4 py-10 z-10">
-        <motion.div 
+        <motion.div
           className="max-w-md mx-auto relative"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ 
-            type: "spring", 
-            stiffness: 300, 
+          transition={{
+            type: "spring",
+            stiffness: 300,
             damping: 20,
             delay: 0.2
           }}
@@ -166,32 +179,30 @@ const AccountPage = () => {
             <button
               onClick={() => setShowLogin(true)}
               className={`w-1/2 py-3 font-medium text-sm transition-all duration-300 ease-in-out 
-                            ${
-                              showLogin
-                                ? "bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg"
-                                : "bg-gray-800/50 text-gray-300"
-                            }`}
+                            ${showLogin
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg"
+                  : "bg-gray-800/50 text-gray-300"
+                }`}
             >
               ĐĂNG NHẬP
             </button>
             <button
               onClick={() => setShowLogin(false)}
               className={`w-1/2 py-3 font-medium text-sm transition-all duration-300 ease-in-out 
-                            ${
-                              !showLogin
-                                ? "bg-gradient-to-r from-green-600 to-emerald-700 text-white shadow-lg"
-                                : "bg-gray-800/50 text-gray-300"
-                            }`}
+                            ${!showLogin
+                  ? "bg-gradient-to-r from-green-600 to-emerald-700 text-white shadow-lg"
+                  : "bg-gray-800/50 text-gray-300"
+                }`}
             >
               ĐĂNG KÝ
             </button>
-            
-            <motion.div 
+
+            <motion.div
               className="absolute bottom-0 h-1 bg-white"
               initial={false}
-              animate={{ 
+              animate={{
                 left: showLogin ? "0%" : "50%",
-                width: "50%" 
+                width: "50%"
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
@@ -209,7 +220,7 @@ const AccountPage = () => {
                   animate="visible"
                   exit="exit"
                 >
-                  <motion.h2 
+                  <motion.h2
                     className="text-2xl font-bold text-white mb-6 text-center"
                     variants={itemVariants}
                   >
@@ -310,7 +321,7 @@ const AccountPage = () => {
                   animate="visible"
                   exit="exit"
                 >
-                  <motion.h2 
+                  <motion.h2
                     className="text-2xl font-bold text-white mb-6 text-center"
                     variants={itemVariants}
                   >

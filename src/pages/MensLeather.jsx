@@ -13,17 +13,17 @@ import {
     FaStar,
     FaTimes,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import productsData from "../Data/products.json";
 import "./styles/WomensHeels.css";
 
 const heroImageUrl =
     "https://cany.vn/image/catalog/banner/cata/giay-tay-banner.png";
 
 const MensLeather = () => {
+
     const [products, setProducts] = useState([]);
-    const [reviews, setReviews] = useState([]);
+    const [reviews] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [priceRange, setPriceRange] = useState("all");
@@ -33,6 +33,10 @@ const MensLeather = () => {
     const [ratingFilter, setRatingFilter] = useState(0);
     const [brandFilters, setBrandFilters] = useState([]);
 
+    const { path } = useParams()
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [path]);
     // State for collapsible sections
     const [showCategories, setShowCategories] = useState(true);
     const [showShoeTypes, setShowShoeTypes] = useState(true);
@@ -40,134 +44,78 @@ const MensLeather = () => {
     const [showRatings, setShowRatings] = useState(true);
     const [showBrands, setShowBrands] = useState(true);
 
+
     useEffect(() => {
+        let isMounted = true;
+
         const fetchData = async () => {
             try {
                 setLoading(true);
 
-                const womenHeels = productsData.filter(
-                    (product) =>
-                        product.gender === "Nam" &&
-                        ((product.category &&
-                            product.category.toLowerCase().includes("Giày Tây")) ||
-                            (product.type && product.type.toLowerCase().includes("Giày Tây")) ||
-                            (product.tags &&
-                                Array.isArray(product.tags) &&
-                                product.tags.some(
-                                    (tag) =>
-                                        typeof tag === "string" &&
-                                        tag.toLowerCase().includes("heel")
-                                )))
+                const response = await fetch("https://apishoes-ihcb.onrender.com/products");
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                const data = await response.json();
+
+                if (!isMounted) return;
+
+
+                const menLeatherShoes = data.filter(
+                    product => product.gender === "Nam" &&
+                        (product.category?.toLowerCase().includes("giày tây") ||
+                            product.type?.toLowerCase().includes("giày tây"))
                 );
 
-                const productsToUse =
-                    womenHeels.length > 0
-                        ? womenHeels
-                        : productsData
-                            .filter((product) => product.gender === "Nam")
-                            .slice(0, 30);
-
-                const fallbackReviews = [
-                    {
-                        name: "Nguyễn Thị Hương",
-                        location: "Hà Nội",
-                        image:
-                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                        rating: 5,
-                        text: "Tôi đã mua đôi giày cao gót từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với nhiều trang phục khác nhau.",
-                    },
-                    {
-                        name: "Trần Minh Anh",
-                        location: "TP. Hồ Chí Minh",
-                        image:
-                            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                        rating: 4,
-                        text: "Giày cao gót rất đẹp và đúng với hình ảnh trên website. Chất lượng tốt, đi êm chân, chỉ hơi đau chút sau khi đi cả ngày.",
-                    },
-                    {
-                        name: "Lê Thanh Hà",
-                        location: "Đà Nẵng",
-                        image:
-                            "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80",
-                        rating: 5,
-                        text: "Sản phẩm đúng với mô tả, phù hợp với cả trang phục công sở và dạ tiệc. Tôi sẽ mua thêm đôi khác trong tương lai.",
-                    },
-                ];
-
-                setReviews(fallbackReviews);
-
-                const enhancedData = productsToUse.map((product) => ({
+                // Format dữ liệu
+                const formattedProducts = menLeatherShoes.map(product => ({
                     ...product,
-                    price:
-                        typeof product.price === "number"
-                            ? `${product.price.toLocaleString("vi-VN")}đ`
-                            : product.price,
-                    image:
-                        product.images && product.images.length > 0
-                            ? product.images[0]
-                            : product.image ||
-                            "https://via.placeholder.com/400x500?text=No+Image",
+                    id: product.id || Math.random().toString(36).substr(2, 9),
+                    price: typeof product.price === "number"
+                        ? `${product.price.toLocaleString("vi-VN")}đ`
+                        : product.price,
+                    image: product.images?.[0] || product.image || "https://via.placeholder.com/400x500?text=No+Image",
                     isNew: product.isNewArrival || product.isNew || false,
                     bestSeller: product.isFeatured || product.bestSeller || false,
-                    color:
-                        product.colors && product.colors.length > 0
-                            ? product.colors[0]
-                            : product.color || "Đen",
-                    category:
-                        product.type ||
-                        ["stiletto", "block", "kitten"][Math.floor(Math.random() * 3)],
-                    discount:
-                        product.discount ||
-                        (Math.random() > 0.8 ? Math.floor(Math.random() * 20 + 10) : 0),
-                    rating: product.rating || (Math.random() * 2 + 3).toFixed(1),
-                    name: product.name.includes("Heel")
-                        ? product.name
-                        : product.name
-                            .replace("Running", "Stiletto")
-                            .replace("Shoe", "Heel"),
+                    color: product.colors?.[0] || product.color || "Đen",
+                    discount: product.discount || 0,
+                    rating: product.rating ? parseFloat(product.rating).toFixed(1) : (Math.random() * 2 + 3).toFixed(1)
                 }));
 
-                setProducts(enhancedData);
-                setFilteredProducts(enhancedData);
-                setLoading(false);
+                // Fallback data nếu không có sản phẩm
+                const productsToUse = formattedProducts.length > 0
+                    ? formattedProducts
+                    : [
+                        {
+                            id: "fallback-1",
+                            name: "Giày Tây Nam Da Thật",
+                            price: "1.890.000đ",
+                            image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
+                            rating: "4.5",
+                            isNew: true,
+                            discount: 15,
+                            bestSeller: true,
+                            color: "Đen"
+                        }
+                    ];
+
+                if (isMounted) {
+                    setProducts(productsToUse);
+                    setFilteredProducts(productsToUse);
+                    setLoading(false);
+                }
             } catch (error) {
                 console.error("Error loading data:", error);
+                if (isMounted) {
+                    setLoading(false);
 
-                const fallbackProducts = [
-                    {
-                        id: 1,
-                        name: "Steve Madden Vala",
-                        price: "1.890.000đ",
-                        image:
-                            "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
-                        rating: "4.5",
-                        category: "stiletto",
-                        isNew: true,
-                        discount: 0,
-                        bestSeller: true,
-                        color: "Đen",
-                    },
-                ];
-
-                const fallbackReviews = [
-                    {
-                        name: "Nguyễn Thị Hương",
-                        location: "Hà Nội",
-                        image:
-                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                        rating: 5,
-                        text: "Tôi đã mua đôi giày cao gót từ cửa hàng này và rất hài lòng. Thiết kế đẹp mắt, thoải mái khi đi và đặc biệt phù hợp với nhiều trang phục khác nhau.",
-                    },
-                ];
-
-                setProducts(fallbackProducts);
-                setFilteredProducts(fallbackProducts);
-                setReviews(fallbackReviews);
-                setLoading(false);
+                }
             }
         };
 
         fetchData();
+
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     const toggleBrandFilter = (brandName) => {
@@ -318,20 +266,20 @@ const MensLeather = () => {
 
     const brands = [
         {
-            name: "Christian Louboutin",
-            logo: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+            name: "Havaianas",
+            logo: "https://images.unsplash.com/photo-1603487742131-4160ec999306?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
         },
         {
-            name: "Jimmy Choo",
-            logo: "https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+            name: "Birkenstock",
+            logo: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
         },
         {
-            name: "Manolo Blahnik",
-            logo: "https://images.unsplash.com/photo-1518049362265-d5b2a6467637?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+            name: "Teva",
+            logo: "https://mma.prnewswire.com/media/2347369/BrandMark_Black_Logo.jpg",
         },
         {
-            name: "Steve Madden",
-            logo: "https://images.unsplash.com/photo-1554238113-6d3dbed5cf6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+            name: "Ipanema",
+            logo: "https://assets.brazilianfootwear.com/brands/thumbs/md/7ffdaddc86096aebff7692c78bc6171c.jpg",
         },
     ];
 
@@ -1058,38 +1006,13 @@ const MensLeather = () => {
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {filteredProducts.map((product) => (
                                     <div key={product.id} className="h-full">
+
                                         {renderProductCard(product)}
                                     </div>
                                 ))}
                             </div>
                         )}
 
-                        {/* Pagination Controls */}
-                        {filteredProducts.length > 0 && (
-                            <div className="mt-8 flex justify-center">
-                                <div className="flex items-center space-x-1">
-                                    <button className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        Prev
-                                    </button>
-                                    <button className="px-4 py-2 rounded-lg bg-blue-600 text-white">
-                                        1
-                                    </button>
-                                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        2
-                                    </button>
-                                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        3
-                                    </button>
-                                    <span className="px-3 py-2">...</span>
-                                    <button className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        10
-                                    </button>
-                                    <button className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                                        Next
-                                    </button>
-                                </div>
-                            </div>
-                        )}
 
                         {/* Mobile filter overlay */}
                         <div className="fixed inset-0 filter-overlay z-50 transform translate-x-full transition-transform duration-300">

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import blogs from '../../../Data/blogs.json';
 
 function BlogList() {
-
+    const storedProducts = localStorage.getItem("blogs");
+    const blogs = storedProducts ? JSON.parse(storedProducts) : [];
     const demoBlogs = blogs.slice(0, 3);
 
     return (

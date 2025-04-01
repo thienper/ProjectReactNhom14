@@ -1,16 +1,24 @@
 import { Search } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, FormControl, Image, InputGroup, ListGroup } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import products from "../../../Data/products.json";
 
 const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [searchOpen, setSearchOpen] = useState(true);
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
     };
+    useEffect(() => {
+        if (!searchOpen) {
+            setSearchTerm('');
 
+            setSearchOpen(true);
+
+        }
+    }, [searchOpen]);
     const filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -35,29 +43,32 @@ const SearchBar = () => {
             {searchTerm && (
                 <ListGroup className="search-results">
                     {filteredProducts.slice(0, 3).map(product => (
-                        <ListGroup.Item key={product.id} className="search-result-item">
-                            <Link to={`/product/${product.id}`} className="search-result-link">
-                                <div className="search-result-image-container">
-                                    <Image 
-                                        src={product.images[0]} 
-                                        alt={product.name} 
-                                        className="search-result-image"
-                                    />
-                                </div>
-                                <div className="search-result-info">
-                                    <div className="search-result-name">{product.name}</div>
-                                    <div className="search-result-price">{product.price}</div>
-                                </div>
-                            </Link>
-                        </ListGroup.Item>
+                        searchOpen && (
+                            <ListGroup.Item key={product.id} onClick={() => setSearchOpen(!searchOpen)} className="search-result-item">
+                                <Link to={`/product/${product.id}`} className="search-result-link">
+                                    <div className="search-result-image-container">
+                                        <Image
+                                            src={product.images[0]}
+                                            alt={product.name}
+                                            className="search-result-image"
+                                        />
+                                    </div>
+                                    <div className="search-result-info">
+                                        <div className="search-result-name">{product.name}</div>
+                                        <div className="search-result-price">{product.price}</div>
+                                    </div>
+                                </Link>
+                            </ListGroup.Item>
+                        )
+
                     ))}
-                    {filteredProducts.length > 3 && (
+                    {/* {filteredProducts.length > 3 && (
                         <ListGroup.Item className="search-result-more">
                             <Link to={`/search?q=${searchTerm}`}>
                                 Xem tất cả {filteredProducts.length} kết quả
                             </Link>
                         </ListGroup.Item>
-                    )}
+                    )} */}
                 </ListGroup>
             )}
 
