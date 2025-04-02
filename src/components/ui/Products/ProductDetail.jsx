@@ -21,7 +21,6 @@ const ProductDetail = () => {
     const productsData = storedProducts ? JSON.parse(storedProducts) : [];
 
     // const { productsData } = useOrder();
-    console.log("danh sach san pham trong pham chi tiet la: ", productsData)
     const products = productsData;
     const [notification, setNotification] = useState({
         show: false,
@@ -34,18 +33,17 @@ const ProductDetail = () => {
     const productIdd = parseInt(productId);
     const product = products.find((item) => item.id === productIdd);
 
-    console.log("san pham trong chi tiet la: ", product)
     const [quantity, setQuantity] = useState(1);
     const [selectedSize, setSelectedSize] = useState('');
     const [selectedImage, setSelectedImage] = useState(product.images[0]);
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [productId]);
-    useEffect(() => {
-        if (product && product.images && product.images.length > 0) {
-            setSelectedImage(product.images[0]);
-        }
-    }, [product]);
+    // useEffect(() => {
+    //     if (product && product.images && product.images.length > 0) {
+    //         setSelectedImage(product.images[0]);
+    //     }
+    // }, [product]);
 
     const handleIncreaseQuantity = () => setQuantity(quantity + 1);
     const handleDecreaseQuantity = () => {

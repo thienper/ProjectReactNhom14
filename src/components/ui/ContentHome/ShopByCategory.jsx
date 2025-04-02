@@ -11,7 +11,7 @@ const ShopByCategory = () => {
                 "https://res.cloudinary.com/dr7iloxoa/image/upload/v1741345708/tggnupnovzijwbyvulqf.jpg",
         },
         {
-            id: 2,
+            id: 1,
             title: "Women's Collection",
             description: "Discover trending footwear for women",
             image:

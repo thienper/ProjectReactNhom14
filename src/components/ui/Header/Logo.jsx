@@ -18,17 +18,15 @@ const Logo = () => {
                 .logo-container {
                     width: 40px;
                     height: 40px;
-                    background: linear-gradient(to right, #f59e0b, #ea580c);
                     border-radius: 10px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
                 }
                 
                 .logo-image {
-                    width: 28px;
-                    height: 28px;
+                    width: 40px;
+                    height: 40px;
                     object-fit: contain;
                 }
                 

@@ -246,7 +246,7 @@ const CartPage = () => {
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-300">Phí vận chuyển:</span>
-                                        <span>{formatCurrency(5)}</span>
+                                        <span>{formatCurrency(50000)}</span>
                                     </div>
                                 </div>
 
